@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4FB550CD-F210-4DC6-A08A-6A38EE11DEA7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KozzionCryptography</RootNamespace>
+    <AssemblyName>kozzioncryptography</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Methods\EIGamal\CyclicGroup.cs" />
+    <Compile Include="Methods\EIGamal\EIGamalPrivateKey.cs" />
+    <Compile Include="Methods\EIGamal\EIGamalMessage.cs" />
+    <Compile Include="Methods\EIGamal\EIGamalPublicKey.cs" />
+    <Compile Include="Methods\EIGamal\IEGamal.cs" />
+    <Compile Include="Methods\LamportDiffie\LamportDiffie.cs" />
+    <Compile Include="Methods\LamportDiffie\PrivateKeyLamportDiffie.cs" />
+    <Compile Include="Methods\LamportDiffie\PublicKeyLamportDiffie.cs" />
+    <Compile Include="Methods\NewHope\Fips202.cs" />
+    <Compile Include="Methods\NewHope\Poly.cs" />
+    <Compile Include="Methods\NewHope\NewHope.cs" />
+    <Compile Include="Primitives\ThresholdShamir\FunctionPolynomialLagrange.cs" />
+    <Compile Include="Primitives\ThresholdShamir\IThreshold.cs" />
+    <Compile Include="Primitives\ThresholdShamir\IThresholdTemplate.cs" />
+    <Compile Include="Primitives\ThresholdShamir\ThresholdShamir.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MultiParty\Poker\BarnettSmartVTMF_dlog.cs" />
+    <Compile Include="Channel\ChannelBigInteger.cs" />
+    <Compile Include="Channel\ChannelOneWay.cs" />
+    <Compile Include="Channel\ChannelTwoWayBigInteger.cs" />
+    <Compile Include="MultiParty\Poker\Constants.cs" />
+    <Compile Include="MultiParty\Poker\GrothSKC.cs" />
+    <Compile Include="MultiParty\Poker\GrothVSSHE.cs" />
+    <Compile Include="Channel\IChannel.cs" />
+    <Compile Include="MultiParty\Poker\IInputChannel.cs" />
+    <Compile Include="MultiParty\Poker\IOutputChannel.cs" />
+    <Compile Include="MultiParty\Poker\mpz_shash_tools.cs" />
+    <Compile Include="MultiParty\Poker\mpz_sprime.cs" />
+    <Content Include="MultiParty\Poker\mpz_sqrtm.c" />
+    <Compile Include="MultiParty\Poker\mpz_srandom.cs" />
+    <Compile Include="MultiParty\Poker\PedersenCommitmentScheme.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kozzioncore\KozzionCore.csproj">
+      <Project>{8102cced-b941-4766-aff8-7c2282506932}</Project>
+      <Name>KozzionCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kozzionmathematics\KozzionMathematics.csproj">
+      <Project>{46a68a25-5d99-45e3-b206-0c1c03ceba32}</Project>
+      <Name>KozzionMathematics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Methods\BarnettSmart\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

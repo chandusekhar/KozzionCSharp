@@ -1,0 +1,67 @@
+﻿<Window x:Class="DisproveGravity.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DisproveGravity"
+        xmlns:user="clr-namespace:DisproveGravity.Control"
+        mc:Ignorable="d"
+        Title="Disprove Gravity" Height="800" Width="1200">
+    <Window.Resources>
+        <user:ValueConvertorColorTestStatus x:Key="ValueConvertorColorTestStatus" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="24" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="6" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>        
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="2" Grid.Column="1"   Content="Sample 0" />
+        <Label Grid.Row="2" Grid.Column="3"   Content="Sample 1" />
+        <Label Grid.Row="2" Grid.Column="5"   Content="Labels" />
+        <Button Grid.Row="2" Grid.Column="7"  Content="Start" Command="{Binding CommandStart}" />
+        <TextBox Grid.Row="4" Grid.Column="1" Grid.RowSpan="3" Text="{Binding Path=Sample0Text}" TextWrapping="Wrap"  AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" />
+        <TextBox Grid.Row="4" Grid.Column="3" Grid.RowSpan="3" Text="{Binding Path=Sample1Text}" TextWrapping="Wrap"  AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" />
+        <TextBox Grid.Row="4" Grid.Column="5" Grid.RowSpan="3" Text="{Binding Path=LabelText}" TextWrapping="Wrap"  AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" />
+    
+        <ListBox Grid.Row="4" Grid.Column="7" Grid.RowSpan="3" ItemsSource ="{Binding TestList}" SelectedItem="{Binding TestSelected, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="24" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Content="{Binding Title}" 
+                               Background="{Binding TestStatus,   Converter={StaticResource ValueConvertorColorTestStatus}}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <user:ViewBeliefs Grid.Row="4" Grid.Column="9"   DataContext="{Binding}"/>
+        <user:ModelTestView Grid.Row="6" Grid.Column="9"   DataContext="{Binding TestSelected}"/>
+
+    </Grid>
+</Window>

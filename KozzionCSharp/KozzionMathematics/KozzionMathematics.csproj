@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{46A68A25-5D99-45E3-B206-0C1C03CEBA32}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KozzionMathematics</RootNamespace>
+    <AssemblyName>kozzionmathematics</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MathNet.Numerics, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.10.0\lib\net40\MathNet.Numerics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algebra\AlgebraIntegerInt32.cs" />
+    <Compile Include="Algebra\AlgebraLinearReal64MathNet.cs" />
+    <Compile Include="Algebra\AlgebraLinearReal64Naitive.cs" />
+    <Compile Include="Algebra\AlgebraRealFloat32.cs" />
+    <Compile Include="Algebra\AlgebraRealInt32.cs" />
+    <Compile Include="Algebra\AlgebraRealFloat64.cs" />
+    <Compile Include="Algebra\AlgebraSymbolInt32.cs" />
+    <Compile Include="Algebra\AlgebraSymbolBigInteger.cs" />
+    <Compile Include="Algebra\AlgebraRealBigDecimal.cs" />
+    <Compile Include="Algebra\IAlgebraField.cs" />
+    <Compile Include="DataStructure\Cycle.cs" />
+    <Compile Include="DataStructure\Matrix\MatrixMathNet.cs" />
+    <Compile Include="DataStructure\BigDecimal\BigDecimal.cs" />
+    <Compile Include="DataStructure\Matrix\MatrixMemory.cs" />
+    <Compile Include="Algebra\IAlgebraLinear.cs" />
+    <Compile Include="Algebra\IAlgebraReal.cs" />
+    <Compile Include="Algebra\IAlgebraInteger.cs" />
+    <Compile Include="DataStructure\Matrix\SVD.cs" />
+    <Compile Include="FiniteField\AlgebraFiniteFieldGenericPrimePower.cs" />
+    <Compile Include="FiniteField\AlgebraFiniteFieldGenericPrime.cs" />
+    <Compile Include="Function\Implementation\Distance\FunctionDistanceAbsoluteDifference.cs" />
+    <Compile Include="Function\Implementation\Distance\FunctionDistanceHamming.cs" />
+    <Compile Include="Function\Implementation\Distance\FunctionDistanceMSE.cs" />
+    <Compile Include="Function\Implementation\FunctionBoolToFloat.cs" />
+    <Compile Include="Function\Implementation\FunctionBoxCar.cs" />
+    <Compile Include="Function\Implementation\FunctionGauss.cs" />
+    <Compile Include="Function\Implementation\FunctionLookup.cs" />
+    <Compile Include="Function\Implementation\FunctionContstant.cs" />
+    <Compile Include="Function\Implementation\FunctionMSEOnDomain.cs" />
+    <Compile Include="Function\Implementation\FunctionMultiStep.cs" />
+    <Compile Include="Function\Implementation\FunctionStep.cs" />
+    <Compile Include="Function\Implementation\Interpolation\FunctionInterpolationLinear.cs" />
+    <Compile Include="Function\Implementation\System\FunctionSystemMatrix.cs" />
+    <Compile Include="Numeric\Convolution\ConvoluterGenericStepCorrectedUnoffsetted.cs" />
+    <Compile Include="Numeric\Convolution\IConvoluterFloat64.cs" />
+    <Compile Include="Numeric\Convolution\ConvoluterFloat64StepCorrectedUnoffsetted.cs" />
+    <Compile Include="Numeric\Convolution\IConvoluter.cs" />
+    <Compile Include="Numeric\Deconvolution\DeconvolutionFourier.cs" />
+    <Compile Include="Numeric\Deconvolution\DeconvolutionKrylov.cs" />
+    <Compile Include="ITransform.cs" />
+    <Compile Include="Function\Implementation\FunctionWeigthed.cs" />
+    <Compile Include="Numeric\Deconvolution\DeconvolutionRichardsonLucy.cs" />
+    <Compile Include="Numeric\Deconvolution\DeconvolutionSVD.cs" />
+    <Compile Include="Numeric\Deconvolution\ITemplateBasisFunction.cs" />
+    <Compile Include="Numeric\Deconvolution\TemplateLancsos.cs" />
+    <Compile Include="Numeric\Minimizer\MinimizerBroydenFletcherGoldfarbShanno.cs" />
+    <Compile Include="Numeric\Minimizer\MinimizerNone.cs" />
+    <Compile Include="Numeric\Minimizer\MinimizerResult.cs" />
+    <Compile Include="Numeric\Minimizer\MinimizerLevenbergMarquardt.cs" />
+    <Compile Include="Numeric\Minimizer\MinimizerNelderMead.cs" />
+    <Compile Include="Numeric\Minimizer\Simplex.cs" />
+    <Compile Include="Numeric\Signal\FilterWindow.cs" />
+    <Compile Include="Numeric\Signal\Windowing\IFilterWindow.cs" />
+    <Compile Include="Numeric\Solver\LinearSolver\BiCGStab.cs" />
+    <Compile Include="Numeric\Solver\LinearSolver\ISolverLinear.cs" />
+    <Compile Include="Numeric\Solver\LinearSolver\SolverLinearMathNetQR.cs" />
+    <Compile Include="Statistics\Distribution\Implementation\DistributionKolmogorovSmirnov.cs" />
+    <Compile Include="Statistics\Distribution\Implementation\DistributionNormalMultivariateFloat64.cs" />
+    <Compile Include="Statistics\Distribution\Implementation\DistributionNormalUnivariateFloat32.cs" />
+    <Compile Include="Statistics\Test\GoodnessOfFit\TestHosmerLemeshow.cs" />
+    <Compile Include="Statistics\Test\ATestGoodnessOfFit.cs" />
+    <Compile Include="Statistics\Test\ATestMultiSample.cs" />
+    <Compile Include="Statistics\Test\ATestOneSample.cs" />
+    <Compile Include="Statistics\Test\ATestOneSampleROC.cs" />
+    <Compile Include="Statistics\Test\ATestTwoSampleROC.cs" />
+    <Compile Include="Statistics\Test\ATestStatistics.cs" />
+    <Compile Include="Statistics\Test\GoodnessOfFit\TestGoodNessOfFitAndersonDarlingTest.cs" />
+    <Compile Include="Statistics\Test\GoodnessOfFit\TestGoodnessOfFitKolmogorovSmirnov.cs" />
+    <Compile Include="Statistics\Test\MultiSample\TestANOVARepeatedMeasures.cs" />
+    <Compile Include="Statistics\Test\MultiSample\TestANOVATwoWay.cs" />
+    <Compile Include="Statistics\Test\MultiSample\TestANOVAOneWay.cs" />
+    <Compile Include="Statistics\Test\MultiSample\TestBartlett.cs" />
+    <Compile Include="Statistics\Test\MultiSample\TestBrownForsythe.cs" />
+    <Compile Include="Statistics\Test\MultiSample\TestFriedman.cs" />
+    <Compile Include="Statistics\Test\MultiSample\TestLevene.cs" />
+    <Compile Include="Statistics\Test\OneSample\TestRunCount.cs" />
+    <Compile Include="Statistics\Test\OneSample\TestShapiroWilk.cs" />
+    <Compile Include="Statistics\Test\OneSampleROC\TestROCMannWhitneyWilcoxon.cs" />
+    <Compile Include="Statistics\Test\TestAssertion.cs" />
+    <Compile Include="Statistics\Test\TestRequirement.cs" />
+    <Compile Include="Statistics\Test\ToolsTesting.cs" />
+    <Compile Include="Statistics\Test\TwoSampleROC\TestROCHanleyMcNeil.cs" />
+    <Compile Include="Statistics\Test\TwoSample\TestAdapterTwoSampleFromMultiSample.cs" />
+    <Compile Include="Statistics\Test\TwoSample\TestAdapterTwoSampleFromOneSample.cs" />
+    <Compile Include="Statistics\Test\TwoSample\TestFisherSnedecor.cs" />
+    <Compile Include="Statistics\Test\TwoSample\TestMannWhitneyWilcoxon.cs" />
+    <Compile Include="Statistics\Test\TwoSample\TestStudentTRepeatedMeasures.cs" />
+    <Compile Include="Statistics\Test\TwoSample\TestWilcoxonSingedRankPaired.cs" />
+    <Compile Include="Tools\BigIntegerPrimeFactorial.cs" />
+    <Compile Include="DataStructure\Graph\IEdge.cs" />
+    <Compile Include="DataStructure\Graph\IGraphTyped.cs" />
+    <Compile Include="DataStructure\Graph\Implementation\Edge.cs" />
+    <Compile Include="DataStructure\Graph\Implementation\GraphFlatHashMap.cs" />
+    <Compile Include="DataStructure\Graph\IGraphFlat.cs" />
+    <Compile Include="DataStructure\Graph\Implementation\GraphTypedImplicit.cs" />
+    <Compile Include="DataStructure\Graph\Implementation\Link.cs" />
+    <Compile Include="DataStructure\Graph\Implementation\LinkElementNode.cs" />
+    <Compile Include="DataStructure\Graph\INode.cs" />
+    <Compile Include="DataStructure\KDTree\IntervalHeap.cs" />
+    <Compile Include="DataStructure\KDTree\KDTree.cs" />
+    <Compile Include="DataStructure\KDTree\KDNode.cs" />
+    <Compile Include="DataStructure\KDTree\KDTreeDoubleEuclidian.cs" />
+    <Compile Include="DataStructure\KDTree\MinHeap.cs" />
+    <Compile Include="DataStructure\KDTree\NearestNeighbour.cs" />
+    <Compile Include="Tools\RankMode.cs" />
+    <Compile Include="Tools\ToolsMathStatistics.cs" />
+    <None Include="DataStructure\KDTree\old\KDNode.err" />
+    <None Include="DataStructure\KDTree\old\KDTree.err" />
+    <Compile Include="DataStructure\Matrix\MatrixMemoryCovariance.cs" />
+    <Compile Include="Function\IFunctionDissimilarity.cs" />
+    <Compile Include="Function\IFunctionDistance.cs" />
+    <Compile Include="Function\Implementation\Distance\FunctionDistanceEuclidean.cs" />
+    <Compile Include="Function\Polynomial\Polynomial.cs" />
+    <Compile Include="Numeric\Minimizer\IMinimizer.cs" />
+    <Compile Include="Numeric\Minimizer\IMinimizerHaltingCriterion.cs" />
+    <Compile Include="Tools\ISamplingStrategy1D.cs" />
+    <Compile Include="Tools\ToolsIOFunction.cs" />
+    <Compile Include="Tools\ToolsMath.cs" />
+    <Compile Include="Tools\ToolsMathBigDecimal.cs" />
+    <Compile Include="Tools\ToolsMathSeries.cs" />
+    <Compile Include="Numeric\Solver\LinearSolver\IPreconditioner.cs" />
+    <Compile Include="Tools\ToolsMathFunction.cs" />
+    <Compile Include="Tools\ToolsMathLinearRegression.cs" />
+    <Compile Include="Random\RandomNumber\MersenneTwister.cs" />
+    <Compile Include="Statistics\Distribution\DistributionMultyVariate.cs" />
+    <Compile Include="Statistics\Distribution\Estimators\EstimatorNormalDistribution.cs" />
+    <Compile Include="Statistics\Distribution\Estimators\IEstimator.cs" />
+    <Compile Include="Statistics\Distribution\IDistribution.cs" />
+    <Compile Include="Statistics\Distribution\Implementation\CulmativeDensityFunction.cs" />
+    <Compile Include="Statistics\Distribution\Implementation\ICulmativeDensityFunction.cs" />
+    <Compile Include="Statistics\Distribution\Implementation\ProbabilityDensityFunction.cs" />
+    <Compile Include="Statistics\Distribution\IProbabilityDensityFunction.cs" />
+    <Compile Include="Statistics\Distribution\Implementation\DistributionNormalUnivariateFloat64.cs" />
+    <Compile Include="Tools\ExtensionsBigInteger.cs" />
+    <Compile Include="Tools\ToolsMathCollection.cs" />
+    <Compile Include="Tools\ToolsMathLinearSolver.cs" />
+    <Content Include="DataStructure\Histogram\HistorgramFixedBinInteger.java" />
+    <Content Include="DataStructure\Histogram\HistrogramPercentileBin.java" />
+    <Content Include="DataStructure\Histogram\IHistorgram.java" />
+    <Content Include="DataStructure\KDTree\old\DataEntry.java" />
+    <None Include="DataStructure\KDTree\old\IRangeSearchTree.err" />
+    <Content Include="DataStructure\KDTree\old\IRangeSearchTreeDouble.java" />
+    <Content Include="DataStructure\KDTree\old\IRangeSearchTreeFloat.java" />
+    <Content Include="DataStructure\KDTree\old\KDTreeDouble.java" />
+    <Content Include="DataStructure\KDTree\old\KDTreeFloat.java" />
+    <None Include="DataStructure\KDTree\old\KDTreeGeneric.err" />
+    <Content Include="DataStructure\KDTree\old\NearestNeighborsSearcherDouble.java" />
+    <Content Include="DataStructure\KDTree\old\NearestNeighborsSearcherFloat.java" />
+    <Content Include="DataStructure\Matrix\CovarianceMatrix.java" />
+    <Compile Include="FiniteField\AlgebraFiniteFieldUInt32Size256.cs" />
+    <Compile Include="FiniteField\AlgebraFiniteFieldInt32Size8.cs" />
+    <Compile Include="Function\Polynomial\PolynomialInt32.cs" />
+    <Compile Include="Function\IFunction.cs" />
+    <Compile Include="DataStructure\Matrix\AMatrix.cs" />
+    <Compile Include="Numeric\Solver\BasicLinearProblem.cs" />
+    <Compile Include="Numeric\Solver\LinearSolver\SolverLinearGMRES.cs" />
+    <Compile Include="Numeric\Solver\LinearSolver\IRD.cs" />
+    <Compile Include="Numeric\Solver\NonLinearProblem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Random\RandomNumberGeneratorExtensions.cs" />
+    <Compile Include="Tools\ToolsMathBigInteger.cs" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Tools\ToolsMathBigIntegerPrime.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kozzioncore\KozzionCore.csproj">
+      <Project>{8102cced-b941-4766-aff8-7c2282506932}</Project>
+      <Name>KozzionCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FiniteField\AlgebraFiniteFieldBigIntegerPrime.cs" />
+    <Compile Include="FiniteField\AlgebraFiniteFieldByte.cs" />
+    <Compile Include="FiniteField\FiniteFieldElement.cs" />
+    <Compile Include="Tools\ToolsMathFiniteField.cs" />
+    <Compile Include="Algebra\IAlgebraFieldFinite.cs" />
+    <Compile Include="Function\IFunctionBijective.cs" />
+    <Compile Include="Function\IFunctionDerivable.cs" />
+    <Compile Include="Function\IFunctionDerivableInfinite.cs" />
+    <Content Include="Function\IFunctionDomainExplicit.java" />
+    <Content Include="Function\IFunctionDomainExplicitNumber.java" />
+    <Content Include="Function\IFunctionDomainNumberLimited.java" />
+    <Content Include="Function\IFunctionMetaDataFloatArrayToBoolean.java" />
+    <Content Include="Function\IFunctionMetaDataFloatArrayToFloat.java" />
+    <Compile Include="Function\Implementation\FunctionBeale.cs" />
+    <Compile Include="Function\Implementation\FunctionHimmelblau.cs" />
+    <Compile Include="Function\Implementation\FunctionIdentity.cs" />
+    <Content Include="Function\Implementation\FunctionIntegerMap.java" />
+    <Content Include="Function\Implementation\Distance\FunctionNormalizedEMDAUCFloat.java" />
+    <Compile Include="Function\Implementation\Distance\FunctionDistanceEMD.cs" />
+    <Compile Include="Function\Implementation\FunctionRosenbrock.cs" />
+    <Compile Include="Function\Implementation\FunctionSigmiod.cs" />
+    <Compile Include="Function\Implementation\FunctionSigmiodDerivative.cs" />
+    <Compile Include="Function\Implementation\FunctionSphere.cs" />
+    <Content Include="Function\Implementation\IntegerIntervalList.java" />
+    <Content Include="Function\Implementation\MetaDataFunctionWrapper.java" />
+    <Content Include="Function\Implementation\MetaDataFunctionWrapperFloatArrayToFloat.java" />
+    <Compile Include="Numeric\Intergral\IIntegralEvaluator.cs" />
+    <Content Include="Numeric\Intergral\RichardsonExtrapolation.java" />
+    <Compile Include="Numeric\Intergral\IntegralEvaluatorRomberg.cs" />
+    <Compile Include="Numeric\Intergral\IntegralEvaluatorTrapezoid.cs" />
+    <Content Include="Numeric\Interpolation\CubicHermiteFuction.java" />
+    <Content Include="Numeric\Interpolation\CublicHermiteInterpolator.java" />
+    <Content Include="Numeric\Interpolation\DividedDifferenceSet.java" />
+    <Content Include="Numeric\Interpolation\FastLagrangeInterpolatorFloat.java" />
+    <Content Include="Numeric\Interpolation\FastLagrangePolynomial.java" />
+    <Content Include="Numeric\Interpolation\IDerivableFloatFunctionInterpolator.java" />
+    <Content Include="Numeric\Interpolation\IFloatFunctionInterpolator.java" />
+    <Content Include="Numeric\Interpolation\LagrangeInterpolatorFloat.java" />
+    <Content Include="Numeric\Interpolation\LagrangePolynomial.java" />
+    <Compile Include="Numeric\Signal\IFilterSignalFloat.cs" />
+    <Compile Include="Numeric\Signal\WindowFilterFloat.cs" />
+    <Content Include="Numeric\Signal\Windowing\AFilterWindowDouble.java" />
+    <Compile Include="Numeric\Signal\Windowing\AWindowFloat.cs" />
+    <Compile Include="Numeric\Signal\Windowing\WindowBartlett.cs" />
+    <Compile Include="Numeric\Signal\Windowing\LancsosWindowFloat.cs" />
+    <Compile Include="Numeric\Signal\Windowing\RectangularWindowFloat.cs" />
+    <Compile Include="Numeric\System\ATimeInvariantIntegrator.cs" />
+    <Compile Include="Numeric\System\ITimeInvariantIntegrator.cs" />
+    <Compile Include="Numeric\System\TimeInvariantIntegratorNewton.cs" />
+    <Compile Include="Numeric\System\TimeInvariantIntegratorRungeKutta4.cs" />
+    <Content Include="Numeric\Series\IFloatSeriesAccelerator.java" />
+    <Compile Include="Numeric\Minimizer\HaltingCriterionIterationsSimplex.cs" />
+    <Content Include="Numeric\Minimizer\NeverHaltingCriterion.java" />
+    <Content Include="Numeric\Series\StephersonFloat.java" />
+    <Content Include="Random\Probability.java" />
+    <Content Include="Random\RandomTools.java" />
+    <Compile Include="Random\RandomNumber\ARandomGenerator.cs" />
+    <Content Include="Random\RandomNumber\IRandomGenerator.java" />
+    <Compile Include="Random\RandomNumber\ISeedGenerator.cs" />
+    <Content Include="Random\RandomNumber\RandomGeneratorCellularAutomaton.java" />
+    <Content Include="Random\RandomNumber\RandomGeneratorCMWC.java" />
+    <Content Include="Random\RandomNumber\RandomGeneratorDefault.java" />
+    <Content Include="Random\RandomNumber\RandomGeneratorXORShift.java" />
+    <Compile Include="Random\RandomNumber\SeedGeneratorDefault.cs" />
+    <Content Include="Statistics\Distribution\ICumulativeDistributionFunctionDouble.java" />
+    <Content Include="Statistics\Distribution\ICumulativeDistributionFunctionFloat.java" />
+    <Content Include="Statistics\Distribution\IDistributionDouble.java" />
+    <Content Include="Statistics\Distribution\IDistributionDoubleInteger.java" />
+    <Content Include="Statistics\Distribution\IDistributionDoubleNumber.java" />
+    <Content Include="Statistics\Distribution\IDistributionFloat.java" />
+    <Content Include="Statistics\Distribution\IDistributionFloatNumber.java" />
+    <Content Include="Statistics\Distribution\IDistributionModelDoubleInteger.java" />
+    <Content Include="Statistics\Distribution\IDistributionModelFloat.java" />
+    <Content Include="Statistics\Distribution\IDistributionModelFloatInteger.java" />
+    <Content Include="Statistics\Distribution\IDistributionModelFloatNumber.java" />
+    <Content Include="Statistics\Distribution\Implementation\CumulativeDistributionFunctionDouble.java" />
+    <Content Include="Statistics\Distribution\Implementation\CumulativeDistributionFunctionFloat.java" />
+    <Content Include="Statistics\Distribution\Implementation\DistributionModelPossionFloat.java" />
+    <Compile Include="Statistics\Distribution\Implementation\DistributionPossion.cs" />
+    <Content Include="Statistics\Distribution\Implementation\MultivariateNormalCulmativeFloat.java" />
+    <Content Include="Statistics\Distribution\Implementation\MultivariateNormalDensityFloat.java" />
+    <Content Include="Statistics\Distribution\Implementation\NormalDistributionDouble.java" />
+    <Content Include="Statistics\Distribution\Implementation\ProbabilityDensityFunctionDouble.java" />
+    <Content Include="Statistics\Distribution\Implementation\ProbabilityDensityFunctionFloat.java" />
+    <Content Include="Statistics\Distribution\IMultivariateDistributionFloat.java" />
+    <Content Include="Statistics\Distribution\IProbabilityDensityFunctionDouble.java" />
+    <Content Include="Statistics\Distribution\IProbabilityDensityFunctionFloat.java" />
+    <Compile Include="Statistics\Test\MultiSample\TestKruskalWallis.cs" />
+    <Compile Include="Statistics\Test\MultiSample\TestIndependance.cs" />
+    <Compile Include="Statistics\Test\GoodnessOfFit\TestGoodNessOfFitChiSquare.cs" />
+    <Compile Include="Statistics\Test\OneSample\TestKolmogorovSmirnov.cs" />
+    <Compile Include="Statistics\Test\ATestTwoSample.cs" />
+    <Compile Include="Statistics\Test\TwoSample\TestStudentTEqualVariance.cs" />
+    <Compile Include="Statistics\Test\TwoSample\TestWelchsT.cs" />
+    <Compile Include="Tools\ToolsMathConvolution.cs" />
+    <Content Include="Tools\FastFourierTransformTools.java" />
+    <Compile Include="Tools\ToolsMathInterpolation.cs" />
+    <Compile Include="Tools\ToolsMathDouble.cs" />
+    <Compile Include="Tools\ToolsMathCollectionDouble.cs" />
+    <Compile Include="Tools\ToolsMathCollectionFloat.cs" />
+    <Compile Include="Tools\ToolsMathInteger.cs" />
+    <Compile Include="Tools\ToolsMathCollectionInteger.cs" />
+    <Compile Include="Tools\MathToolsMatrixRealFloat.cs" />
+    <Compile Include="Tools\ToolsMathSignal.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

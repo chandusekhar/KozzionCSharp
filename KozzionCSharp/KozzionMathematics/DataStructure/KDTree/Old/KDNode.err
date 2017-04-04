@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace kozzionmathematics.datastructure.k_d_tree
+{
+    class KDNode<CoordinateType, LabellingType>// : Tuple<CoordinateType [], LabellingType>
+    {
+			private static  long serialVersionUID = 1L;
+
+            public int d_discriminator;
+            public CoordinateType[] d_point;
+            public LabellingType d_value;
+            public KDNode<CoordinateType, LabellingType> d_low;
+            public KDNode<CoordinateType, LabellingType> d_high;
+
+            public KDNode(int discriminator, CoordinateType[] point, LabellingType value)
+			{
+				d_point = point;
+				d_value = value;
+				d_low = null;
+				d_high = null;
+				d_discriminator = discriminator;
+			}
+
+			public bool equals( Object other)
+			{
+                KDNode<CoordinateType, LabellingType> node = (KDNode<CoordinateType, LabellingType>)other;
+
+				if (node == this)
+				{
+					return true;
+				}
+				else
+				{
+					return ((getKey() == null ? node.getKey() == null : getKey().Equals(node.getKey())) && (getValue() == null ? node
+						.getValue() == null : getValue().Equals(node.getValue())));
+				}
+			}
+
+
+			public CoordinateType [] getKey()
+			{
+				return d_point;
+			}
+
+			public LabellingType getValue()
+			{
+				return d_value;
+			}
+
+			// Only call if the node is in the tree.
+			public LabellingType setValue( LabellingType value)
+			{
+                d_hash_code -= GetHashCode();
+                LabellingType old = d_value;
+				d_value = value;
+                d_hash_code += GetHashCode();
+				return old;
+			}
+
+            public override int GetHashCode()
+			{
+                if (getKey() == null)
+                {
+                    return 0;
+                }
+                else
+                { 
+                    getKey().GetHashCode() ^ (getValue() == null ? 0 : getValue().GetHashCode()));
+                }
+			}
+
+
+		}
+}

@@ -1,0 +1,15 @@
+﻿
+
+
+TO READ
+[1] Hollander, M. and D. A. Wolfe.  Nonparametric Statistical Methods. Wiley, 1973.
+[2] Gibbons, J.D.  Nonparametric Statistical Inference, 2nd ed.  M. Dekker, 1985.
+
+Oosterbroek test:
+for two multivariate samples of any size and a measure
+for every sample compute wilconcon statistic based on and z transform it.
+now combine
+
+NOTE correlation
+NOTE works for any measure, but some have better power than others?
+

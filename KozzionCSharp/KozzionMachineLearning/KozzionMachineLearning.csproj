@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6FDF2E5F-5821-49A6-ABA7-3F85EBC510BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KozzionMachineLearning</RootNamespace>
+    <AssemblyName>kozzionmachinelearning</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accord, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.0.2\lib\net45\Accord.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.MachineLearning, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.MachineLearning.3.0.2\lib\net45\Accord.MachineLearning.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Math, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.0.2\lib\net45\Accord.Math.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.0.2\lib\net45\Accord.Statistics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.OpenJDK.Charsets.7.2.4630.5\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.OpenJDK.Core.7.2.4630.5\lib\IKVM.OpenJDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.OpenJDK.Security.7.2.4630.5\lib\IKVM.OpenJDK.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.OpenJDK.SwingAWT.7.2.4630.5\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.OpenJDK.Text.7.2.4630.5\lib\IKVM.OpenJDK.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.OpenJDK.Util.7.2.4630.5\lib\IKVM.OpenJDK.Util.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.OpenJDK.XML.API.7.2.4630.5\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.Runtime.7.2.4630.5\lib\IKVM.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="libsvm, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\libsvm.net.2.1.8\lib\libsvm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LIBSVM.NET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\libsvm.net.2.1.8\lib\LIBSVM.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.10.0\lib\net40\MathNet.Numerics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PowerCollections, Version=1.0.2141.24679, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAct.Wintellect.PowerCollections.0.0.1\lib\net20\PowerCollections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clustering\AClustering.cs" />
+    <Compile Include="Clustering\Hierachycal\CentroidHierarchy.cs" />
+    <Compile Include="Clustering\Hierachycal\ClusteringHierarchy.cs" />
+    <Compile Include="Clustering\ICentroidHierarchy.cs" />
+    <Compile Include="Clustering\IClustering.cs" />
+    <Compile Include="Clustering\IClusteringCentroid.cs" />
+    <Compile Include="Clustering\ITemplateCentroidCalculator.cs" />
+    <Compile Include="Clustering\ITemplateClusteringHierarchy.cs" />
+    <Compile Include="Clustering\ITemplateClusteringCentroid.cs" />
+    <Compile Include="Clustering\CentroidCaluculatorNominal.cs" />
+    <Compile Include="Clustering\CentroidFloat32.cs" />
+    <Compile Include="Clustering\CentroidNominal.cs" />
+    <Compile Include="Clustering\ICentroidDistance.cs" />
+    <Compile Include="Clustering\ClusteringCentroid.cs" />
+    <Compile Include="Clustering\KMeans\TemplateClusteringKMeansNominal.cs" />
+    <Compile Include="Clustering\LeaderFollower\TemplateClusteringLeaderFollowerNominal.cs" />
+    <Compile Include="Clustering\TemplateCentroidCalculatorMeanFloatArray.cs" />
+    <Compile Include="Clustering\TemplateCentroidCalculatorNominal.cs" />
+    <Compile Include="DataSet\DataSetHybrid.cs" />
+    <Compile Include="Method\LVQ\ModelLVQ.cs" />
+    <Compile Include="Method\DecisionTrees\ModelDiscreteC45Default.cs" />
+    <Compile Include="Method\DecisionTrees\TemplateModelDiscreteC45Default.cs" />
+    <Compile Include="Method\LVQ\TemplateModelLVQ.cs" />
+    <Compile Include="Method\NaiveBayes\FunctionMarginalIntervalNormal.cs" />
+    <Compile Include="Method\NaiveBayes\ModelNaiveBayesInterval.cs" />
+    <Compile Include="Method\NaiveBayes\TemplateModelNaiveBayesInterval.cs" />
+    <Compile Include="Method\NearestNeighbor\ModelNearestNeighborKDTreeDefault.cs" />
+    <Compile Include="Method\NearestNeighbor\TemplateModelNearestNeighborIntervalMean.cs" />
+    <Compile Include="Method\NearestNeighbor\TemplateModelNearestNeighborListDefault.cs" />
+    <Compile Include="Method\NearestNeighbor\TemplateModelNearestNeighborNominal.cs" />
+    <Compile Include="Model\IModelLabelIterative.cs" />
+    <Compile Include="Shady\FunctionFindClosestAUCROCs.cs" />
+    <Compile Include="Shady\FunctionFindMaxAUCROCPs.cs" />
+    <Compile Include="Shady\FunctionMinimalCount.cs" />
+    <Compile Include="Shady\SelectionOptimization.cs" />
+    <Compile Include="Tools\ToolsModelComparrison.cs" />
+    <Compile Include="Tools\ToolsModelIO.cs" />
+    <Compile Include="Transform\ATransform.cs" />
+    <Compile Include="Transform\ITransform.cs" />
+    <Compile Include="Method\DecisionTrees\ModelDiscreteC45.cs" />
+    <Compile Include="Method\DecisionTrees\TemplateModelDiscreteC45.cs" />
+    <Compile Include="Method\JointTable\ModelLikelihoodNominalJointTable.cs" />
+    <Compile Include="Method\NearestNeighbor\ModelNearestNeighborList.cs" />
+    <Compile Include="Method\NearestNeighbor\TemplateModelNearestNeighborKDTreeDefault.cs" />
+    <Compile Include="Model\AModelDiscrete.cs" />
+    <Compile Include="Model\AModelLabel.cs" />
+    <Compile Include="Model\AModelLikelihood.cs" />
+    <Compile Include="Model\ATemplateModelLabel.cs" />
+    <Compile Include="Model\ATemplateModelDiscrete.cs" />
+    <Compile Include="Model\ATemplateModelLikelihood.cs" />
+    <Compile Include="Applications\ClassifierPartitionTree.cs" />
+    <Compile Include="Model\IModelDiscreteIterative.cs" />
+    <Compile Include="Model\IModelLabel.cs" />
+    <Compile Include="Model\ITemplateModelLabel.cs" />
+    <Compile Include="Model\ITemplateModelLikelihood.cs" />
+    <Compile Include="Model\ITemplateModelDiscrete.cs" />
+    <Compile Include="Model\IModelDiscrete.cs" />
+    <Compile Include="Reporting\ReportROC.cs" />
+    <Compile Include="Model\ModelDiscreteSelecting.cs" />
+    <Compile Include="Reporting\ReportLikelihood.cs" />
+    <Compile Include="Reporting\ReportResidual.cs" />
+    <Compile Include="Model\TemplateModelFeatureSelecting.cs" />
+    <Compile Include="Method\HiddenMarkovRandomField\HiddenMarkovRandomFieldModelNeighborhoodDisjuntion.cs" />
+    <Compile Include="Method\HiddenMarkovRandomField\HiddenMarkovRandomFieldTemplate.cs" />
+    <Compile Include="Method\JointTable\TemplateModelJointTable.cs" />
+    <Compile Include="Model\IModelLikelihood.cs" />
+    <Compile Include="Method\NaiveBayes\FunctionMarginalNominal.cs" />
+    <Compile Include="Method\NearestNeighbor\ModelNearestNeighborKDTree.cs" />
+    <Compile Include="Method\NearestNeighbor\ModelNearestNeighborListDefault.cs" />
+    <Compile Include="Method\NearestNeighbor\NearestNeighborEstimatorDouble.cs" />
+    <Compile Include="Method\SimulatedAnealing\SimulatedAnealing.cs" />
+    <Compile Include="Method\SLIC\SLIC.cs" />
+    <Compile Include="Method\SLIC\SLIC2D.cs" />
+    <Compile Include="HelperFunctions\ErrorFunctions\FunctionDistanceToTarget.cs" />
+    <Compile Include="HelperFunctions\TweenerFunctions\FunctionLinearDecay.cs" />
+    <Compile Include="HelperFunctions\Mutators\MutatorPointOneInt.cs" />
+    <Compile Include="HelperFunctions\Mutators\AMutatorPopulation.cs" />
+    <Compile Include="Method\GeneticAlgoritm\GeneticAlgoritm.cs" />
+    <Compile Include="HelperFunctions\Mutators\IMutatorPopulation.cs" />
+    <Compile Include="Method\SLIC\SLIC3D.cs" />
+    <Compile Include="Method\SupportVectorMachine\ModelLibSVMCSVC.cs" />
+    <Compile Include="Regression\IFunctionAproximateIncremental.cs" />
+    <Compile Include="Reporting\Report.cs" />
+    <Compile Include="Reporting\ReportDiscrete.cs" />
+    <Compile Include="Reporting\ReportDetection.cs" />
+    <Compile Include="Transform\DimensionReduction\TemplateDimensionReductionPCADefault.cs" />
+    <Compile Include="Transform\DimensionReduction\TemplateDimensionReductionPCA.cs" />
+    <Compile Include="Transform\DimensionReduction\DimensionReductionPCA.cs" />
+    <Compile Include="Transform\TransformInverse.cs" />
+    <Compile Include="Transform\TransformWhitening.cs" />
+    <Compile Include="Voting\VotingSystemMeanDouble.cs" />
+    <Compile Include="Clustering\Hierachycal\LinkElementTreeTemplate.cs" />
+    <Compile Include="Method\DeepLearning\DeepNeuralNet.cs" />
+    <Compile Include="Method\DeepLearning\RBMLayer.cs" />
+    <Compile Include="Method\ExpectationMaximalization\ExpectationMaximization.cs" />
+    <Compile Include="Method\ExpectationMaximalization\IExpectationFunctionGenerator.cs" />
+    <Compile Include="Method\ExpectationMaximalization\implementation\GaussianMixtureFloat.cs" />
+    <Compile Include="Method\ExpectationMaximalization\implementation\GaussianMixtureGeneratorFloat.cs" />
+    <Compile Include="Method\MultiLayerPerceptron\MultiLayerPerceptronFloat.cs" />
+    <Compile Include="Method\MultiLayerPerceptron\MultiLayerPerceptronNew.cs" />
+    <Compile Include="Method\MultiLayerPerceptron\PerceptronNew.cs" />
+    <Compile Include="HelperFunctions\Mutators\IMutatorPoint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Voting\IVotingSystem.cs" />
+    <Compile Include="Voting\SingleVoteSystem.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Method\amlvq\AMLVQ.java" />
+    <Content Include="Model\ClassifierBooleanImage2DClassifier.java" />
+    <Content Include="Model\ClassifierClusteringModel.java" />
+    <Compile Include="Method\NaiveBayes\TemplateModelNaiveBayesNominal.cs" />
+    <Compile Include="Method\NaiveBayes\ModelNaiveBayesNominal.cs" />
+    <Content Include="Method\GraphCuts\block.h" />
+    <Content Include="Method\GraphCuts\energy.h" />
+    <Content Include="Method\GraphCuts\example.cpp" />
+    <Content Include="Method\GraphCuts\GCoptimization.cpp" />
+    <Content Include="Method\GraphCuts\GCoptimization.h" />
+    <Content Include="Method\GraphCuts\graph.cpp" />
+    <Content Include="Method\GraphCuts\graph.h" />
+    <Content Include="Method\GraphCuts\LinkedBlockList.cpp" />
+    <Content Include="Method\GraphCuts\LinkedBlockList.h" />
+    <Content Include="Method\GraphCuts\maxflow.cpp" />
+    <Content Include="Method\NaiveBayes\NaiveBayesClassifierContinuous.java" />
+    <Content Include="Method\NaiveBayes\NaiveBayesClassifierContinuousParzen.java" />
+    <Content Include="Method\NaiveBayes\NaiveBayesEstimator.java" />
+    <Content Include="Clustering\ClassifierClusterModel.java" />
+    <Compile Include="Model\ModelClusteringCentroids.cs" />
+    <Compile Include="Clustering\Hierachycal\TemplateClusteringHierarchyCompleteLink.cs" />
+    <Compile Include="Clustering\Hierachycal\TemplateClusteringHierarchySingleLink.cs" />
+    <Compile Include="Clustering\IClusteringHierarchy.cs" />
+    <Compile Include="Clustering\CentroidCalculatorMeanFloatArray.cs" />
+    <Compile Include="Clustering\KMeans\TemplateClusteringKMeans.cs" />
+    <Compile Include="Clustering\KMeans\TemplateClusteringKMeansFloat32.cs" />
+    <Compile Include="Clustering\KMeans\KMeansDefaultWhiteningIntegerArray.cs" />
+    <Compile Include="Clustering\KMeans\KMeansDefaultWhiteningIntegerArrayModel.cs" />
+    <Content Include="Clustering\KMeans\KMeansManhattan.java" />
+    <Content Include="Clustering\Kohonen\Kohonen.java" />
+    <Compile Include="Clustering\LeaderFollower\TemplateClusteringLeaderFollower.cs" />
+    <Compile Include="DataSet\DataSet.cs" />
+    <Compile Include="DataSet\DataContext.cs" />
+    <Compile Include="DataSet\FeatureDescriptor.cs" />
+    <Compile Include="DataSet\FeatureLevel.cs" />
+    <Compile Include="DataSet\IDataSetHybrid.cs" />
+    <Compile Include="DataSet\IDataContext.cs" />
+    <Compile Include="DataSet\IDataSet.cs" />
+    <Compile Include="FeatureSelection\DetectorEvaluatorROCAUC.cs" />
+    <Content Include="FeatureSelection\ExaustiveFeatureSelector.java" />
+    <Compile Include="FeatureSelection\FeatureSelectorGreedy.cs" />
+    <Compile Include="FeatureSelection\IFeatureSetEvaluator.cs" />
+    <Compile Include="FeatureSelection\IFeatureSetSelectorFloat.cs" />
+    <Compile Include="FeatureSelection\INominalDataDetectorEvaluator.cs" />
+    <Content Include="FeatureSelection\RandomFeatureSelector.java" />
+    <Compile Include="FeatureSelection\EvaluatorReapetedRandomFold.cs" />
+    <Content Include="Method\NaiveBayes\BayesianParzenFilter.java" />
+    <Content Include="Method\HiddenMarkov\HiddenMarkovEstimator.java" />
+    <Compile Include="Method\MultiLayerPerceptron\MultiLayerPerceptron.cs" />
+    <Content Include="Method\MultiLayerPerceptron\MultiLayerPerceptronClassifierOld.java" />
+    <Content Include="Method\MultiLayerPerceptron\MultiLayerPerceptronTemplate.java" />
+    <Content Include="Method\MultiLayerPerceptron\OutputFunction.java" />
+    <Compile Include="Method\MultiLayerPerceptron\Perceptron.cs" />
+    <Content Include="Method\SupportVectorMachine\LibLinearSvm.java" />
+    <Compile Include="Method\SupportVectorMachine\TemplateModelLibSVMCSVC.cs" />
+    <Compile Include="Regression\IFunctionAproximator.cs" />
+    <Compile Include="Regression\IFunctionAproximatorIncremental.cs" />
+    <Compile Include="Transform\ITemplateTransform.cs" />
+    <Content Include="Transform\PercentileTransformDouble.java" />
+    <Content Include="Transform\TransformGeneratorIdentity.java" />
+    <Compile Include="Transform\TransformGeneratorQuantile.cs" />
+    <Content Include="Transform\TransformGeneratorWhitening.java" />
+    <Compile Include="Transform\TransformRescale.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kozzioncore\KozzionCore.csproj">
+      <Project>{8102cced-b941-4766-aff8-7c2282506932}</Project>
+      <Name>KozzionCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kozziongraphics\KozzionGraphics.csproj">
+      <Project>{215e985c-fbd1-4e1f-a27a-4b6631211f7b}</Project>
+      <Name>KozzionGraphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kozzionmathematics\KozzionMathematics.csproj">
+      <Project>{46a68a25-5d99-45e3-b206-0c1c03ceba32}</Project>
+      <Name>KozzionMathematics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.0.2\build\Accord.targets" Condition="Exists('..\packages\Accord.3.0.2\build\Accord.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Accord.3.0.2\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.0.2\build\Accord.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

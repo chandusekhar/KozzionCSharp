@@ -1,0 +1,369 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace kozzionmathematics.datastructure.k_d_tree
+{
+    public class KDTree<KeyType, LabelType> : IRangeSearchTree<KeyType, LabelType>
+        where KeyType : IComparable<KeyType>
+    {
+        int d_hash_code;
+        int d_size;
+        int d_dimension_count;
+        KDNode<KeyType, LabelType> d_root_node;
+
+        public KDTree(int dimension_count)
+        {
+            Debug.Assert(dimension_count > 0);
+            d_hash_code = 0;
+            d_size = 0;
+            d_dimension_count = 0;
+            d_dimension_count = dimension_count;
+            Clear();
+        }
+
+        public void Add(KeyType[] key, LabelType value)
+        {
+            KDNode<KeyType, LabelType> [] parent = new KDNode<KeyType, LabelType> [1];
+			KDNode<KeyType, LabelType> node = getNode(key, parent);
+			KeyType old = default(KeyType);
+			if (node != null)
+			{
+				old = node.getValue();
+				d_hash_code -= node.GetHashCode();
+				node.d_value = value;
+			}
+			else
+			{
+				if (parent[0] == null)
+				{
+					node = d_root_node = new KDNode<KeyType, LabelType>(0, point, value);
+				}
+				else
+				{
+					 int discriminator = parent[0].d_discriminator;
+					if (key[(discriminator].CompareTo(parent[0].d_point[discriminator]) >= 0)
+					{
+						node = parent[0].d_high = new KDNode<KeyType, LabelType>((discriminator + 1) % d_dimension_count, point, value);
+					}
+					else
+					{
+						node = parent[0].d_low = new KDNode<KeyType, LabelType>((discriminator + 1) % d_dimension_count, point, value);
+					}
+				}
+				++d_size;
+			}
+			d_hash_code += node.GetHashCode();
+        }
+
+        public bool ContainsKey(KeyType[] key)
+        {
+            return (getNode(key) != null); 
+        }
+
+        public ICollection<KeyType[]> Keys
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool Remove(KeyType[] key)
+        {
+            KDNode<KeyType, LabelType>[] parent = new KDNode<KeyType, LabelType>[1];
+            KDNode<KeyType, LabelType> node = getNode(key, parent);
+            LabelType old = default(LabelType);
+
+            if (node == null)
+            {
+                return false;
+            }
+            else 
+            {            
+                KDNode<KeyType, LabelType> child = node;
+                node = recursiveRemoveNode(child);
+
+                if (parent[0] == null)
+                {
+                    d_root_node = node;
+                }
+                else
+                    if (child == parent[0].d_low)
+                    {
+                        parent[0].d_low = node;
+                    }
+                    else
+                        if (child == parent[0].d_high)
+                        {
+                            parent[0].d_high = node;
+                        }
+
+                --d_size;
+                d_hash_code -= child.GetHashCode();
+                old = child.getValue();
+                return true;
+            }
+        }
+
+        //DONE
+        public bool TryGetValue(KeyType[] key, out LabelType value)
+        {
+            KDNode<KeyType, LabelType> node = getNode(point);
+            if (node == null)
+            {
+                return false;
+            }
+            else
+            {
+                value = node.getValue();
+                return true;
+            }
+        }
+
+        public ICollection<LabelType> Values
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public LabelType this[KeyType[] key]
+        {
+            get
+            {
+                KDNode<KeyType, LabelType> node = getNode(point);
+                if (node == null)
+                {
+                    return default(LabelType);
+                }
+                else
+                {
+                    return node.getValue();
+                }
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        //DONE
+        public void Add(KeyValuePair<KeyType[], LabelType> item)
+        {
+            Add(item.Key, item.Value);
+        }
+
+
+        //DONE
+        public void Clear()
+        {
+            d_root_node = null;
+            d_size = 0;
+            d_hash_code = 0;
+        }
+
+        public bool Contains(KeyValuePair<KeyType[], LabelType> item)
+        {
+            return item.Equals(getNode(item.Key));
+        }
+
+        public void CopyTo(KeyValuePair<KeyType[], LabelType>[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Count
+        {
+            get { return d_size; }
+        }
+
+        public bool IsReadOnly
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool Remove(KeyValuePair<KeyType[], LabelType> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<KeyValuePair<KeyType[], LabelType>> GetEnumerator()
+        {
+            return new IEnumerator<KeyValuePair<KeyType[], LabelType>>
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool equals(Object other)
+        {
+            if (!(other is IRangeSearchTree<CoordinateType[], LabellingType>))
+            {
+                return false;
+            }
+
+            if (other == this)
+            {
+                return true;
+            }
+            return false;
+            // Map<CoordinateListType, LabellingType> map = (Map<CoordinateListType, LabellingType>) object;
+            //return (entrySet().equals(map.entrySet()));
+        }
+
+        public override int GetHashCode()
+        {
+            return d_hash_code;
+        }
+
+
+        //PRIVATE
+        private class MapEntryIterator : IEnumerator<KeyValuePair<KeyType[], LabelType>>
+		{
+			IList<KDNode<KeyType, LabelType>> _stack;
+			KDNode<KeyType, LabelType>             _next;
+			KeyType[] _lower;
+            KeyType[] _upper;
+
+			MapEntryIterator(KDTree<KeyType, LabelType> tree,KeyType[] lower,  KeyType[] upper)
+			{
+				_stack = new List<KDNode<KeyType, LabelType>();
+				_lower = lower;
+				_upper = upper;
+				_next = null;
+
+				if (tree.d_root_node != null)
+				{
+					_stack.addLast(tree.d_root_node);
+				}
+				next();
+			}
+
+            // Summary:
+            //     Gets the element in the collection at the current position of the enumerator.
+            //
+            // Returns:
+            //     The element in the collection at the current position of the enumerator.
+            KeyValuePair<KeyType[], LabelType> Current { get; }
+            // Summary:
+            //     Advances the enumerator to the next element of the collection.
+            //
+            // Returns:
+            //     true if the enumerator was successfully advanced to the next element; false
+            //     if the enumerator has passed the end of the collection.
+            //
+            // Exceptions:
+            //   System.InvalidOperationException:
+            //     The collection was modified after the enumerator was created.
+            bool MoveNext();
+            //
+            // Summary:
+            //     Sets the enumerator to its initial position, which is before the first element
+            //     in the collection.
+            //
+            // Exceptions:
+            //   System.InvalidOperationException:
+            //     The collection was modified after the enumerator was created.
+            void Reset();
+
+
+			public bool hasNext()
+			{
+				return (_next != null);
+			}
+
+			public KeyValuePair<KeyType[], LabellingType> next()
+			{
+				 KdNode old = _next;
+
+				while (!_stack.IsEmpty())
+				{
+					 KdNode node = _stack.removeLast();
+					 int discriminator = node.d_discriminator;
+
+					if (((_upper == null) || (node.d_point.get_coordinate(discriminator).compareTo(_upper.get_coordinate(discriminator)) <= 0))
+						&& (node.d_high != null))
+					{
+						_stack.addLast(node.d_high);
+					}
+
+					if (((_lower == null) || (node.d_point.get_coordinate(discriminator).compareTo(_lower.get_coordinate(discriminator)) > 0))
+						&& (node.d_low != null))
+					{
+						_stack.addLast(node.d_low);
+					}
+
+					if (isInRange(node.d_point, _lower, _upper))
+					{
+						_next = node;
+						return old;
+					}
+				}
+
+				_next = null;
+
+				return old;
+			}
+
+			// This violates the contract for entrySet, but we can't support
+			// in a reasonable fashion the removal of mappings through the iterator.
+			// Java iterators require a hasNext() function, which forces the stack
+			// to reflect a future search state, making impossible to adjust the
+			// current
+			// stack after a removal. Implementation alternatives are all too
+			// expensive. Yet another reason to favor the C++ implementation...
+		
+			public void remove() throws UnsupportedOperationException
+			{
+				throw new UnsupportedOperationException();
+			}
+		}
+
+        private KDNode<KeyType, LabelType> optimize(KDNode<KeyType, LabelType>[] nodes, int begin, int end, NodeComparator comp)
+        {
+            KDNode<KeyType, LabelType> midpoint = null;
+            int size = end - begin;
+
+            if (size > 1)
+            {
+                int nth = begin + (size >> 1);
+                int nthprev = nth - 1;
+                int d = comp.getDiscriminator();
+
+                Array.Sort(nodes, begin, end, comp);
+
+                while ((nth > begin) && (nodes[nth].d_point[d].CompareTo(nodes[nthprev].d_point[d]) == 0))
+                {
+                    --nth;
+                    --nthprev;
+                }
+
+                midpoint = nodes[nth];
+                midpoint.d_discriminator = d;
+
+                if (++d >= d_dimension_count)
+                {
+                    d = 0;
+                }
+
+                comp.setDiscriminator(d);
+
+                midpoint.d_low = optimize(nodes, begin, nth, comp);
+
+                comp.setDiscriminator(d);
+
+                midpoint.d_high = optimize(nodes, nth + 1, end, comp);
+            }
+            else
+                if (size == 1)
+                {
+                    midpoint = nodes[begin];
+                    midpoint.d_discriminator = comp.getDiscriminator();
+                    midpoint.d_low = midpoint.d_high = null;
+                }
+            return midpoint;
+        }
+    }
+}

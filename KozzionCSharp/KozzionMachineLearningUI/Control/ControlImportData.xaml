@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="KozzionMachineLearningUI.Control.ControlImportData"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:localcontrol="clr-namespace:KozzionMachineLearningUI.Control"
+             xmlns:localmodel="clr-namespace:KozzionMachineLearningUI.Model"
+             xmlns:localconverter="clr-namespace:KozzionMachineLearningUI.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <localconverter:EnumMatchToBooleanConverter x:Key="EnumConverter" />
+    </UserControl.Resources>
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions> 
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        
+        
+        <Label Grid.Row="1"  Grid.Column="1"  Content="DataSources"/>
+        <Label Grid.Row="1"  Grid.Column="3"  Content="DataSourceType"/>
+        <ScrollViewer Grid.Row="3"  Grid.Column="1"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+            <ListBox Name="ListBoxFeatureList" Background="Gray" ItemsSource ="{Binding DataSourceList}" SelectionMode="Single" SelectionChanged="CommandListBoxFeatureListSelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Grid.Row="0"  Grid.Column="0" Content="{Binding Title}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="3"  Grid.Column="3">
+            <Label Content="Field Delimiter"/>
+            <RadioButton Content="CSV" GroupName="Options1" IsChecked="{Binding Path=SelectedDataSource.DataSourceType, Mode=TwoWay, Converter={StaticResource EnumConverter}, ConverterParameter=CSV}"  />
+            <RadioButton Content="EXCELL" GroupName="Options2" IsChecked="{Binding Path=SelectedDataSource.DataSourceType, Mode=TwoWay, Converter={StaticResource EnumConverter}, ConverterParameter=EXCELL}"  />
+            <RadioButton Content="SPSS" GroupName="Options3" IsChecked="{Binding Path=SelectedDataSource.DataSourceType, Mode=TwoWay, Converter={StaticResource EnumConverter}, ConverterParameter=SPSS}"  />
+            <RadioButton Content="ACCESS" GroupName="Options3" IsChecked="{Binding Path=SelectedDataSource.DataSourceType, Mode=TwoWay, Converter={StaticResource EnumConverter}, ConverterParameter=ACCESS}"  />
+            <RadioButton Content="SQL" GroupName="Options3" IsChecked="{Binding Path=SelectedDataSource.DataSourceType, Mode=TwoWay, Converter={StaticResource EnumConverter}, ConverterParameter=SQL}"  />
+       </StackPanel>
+    </Grid>
+</UserControl>

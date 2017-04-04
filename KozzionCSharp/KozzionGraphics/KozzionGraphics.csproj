@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{215E985C-FBD1-4E1F-A27A-4B6631211F7B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KozzionGraphics</RootNamespace>
+    <AssemblyName>kozziongraphics</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BitMiracle.LibTiff.NET, Version=2.4.511.0, Culture=neutral, PublicKeyToken=53879b3e20e7a7d6, processorArchitecture=MSIL">
+      <HintPath>..\packages\BitMiracle.LibTiff.NET.2.4.511.0\lib\net20\BitMiracle.LibTiff.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="C5, Version=2.4.5947.17248, Culture=neutral, PublicKeyToken=282361b99ded7e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\C5.2.4.5947.17249\lib\net45\C5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PowerCollections, Version=1.0.2141.24679, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAct.Wintellect.PowerCollections.0.0.1\lib\net20\PowerCollections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorFunction\FunctionFloat32ToColorInt.cs" />
+    <Compile Include="ColorFunction\FunctionFloat64ToColorJet.cs" />
+    <Compile Include="ColorFunction\FunctionFloat32ToColorParula.cs" />
+    <Compile Include="ColorFunction\FastBitmap.cs" />
+    <Compile Include="ColorFunction\FunctionColorToUInt16Gray.cs" />
+    <Compile Include="ColorFunction\FunctionUInt16ToColorWindow.cs" />
+    <Compile Include="ColorFunction\FunctionFloat64ToColorCycle.cs" />
+    <Compile Include="ElementTree\AlphaPartition\AlphaPartitionTreeMinTree.cs" />
+    <Compile Include="ElementTree\MaxTree\Filter\FilterMeanValue.cs" />
+    <Compile Include="ElementTree\AlphaPartition\IAlphaPartitionTree.cs" />
+    <Compile Include="ElementTree\AlphaPartition\Implementation\AlphaPartitionTree2D.cs" />
+    <Compile Include="ElementTree\Feature\FeatureGeneratorElementNode3DDouble.cs" />
+    <Compile Include="ElementTree\Feature\ToolsMathMatrix3Float64.cs" />
+    <Compile Include="ElementTree\MaxTree\ComparerNatural.cs" />
+    <Compile Include="ElementTree\MaxTree\Filter\FilterSizeElongationSparcityFloat32.cs" />
+    <Compile Include="ElementTree\MaxTree\Filter\FilterSizeElongationSparcityFloat64.cs" />
+    <Compile Include="ElementTree\MaxTree\IMaxTree.cs" />
+    <Compile Include="ElementTree\MaxTree\IMaxTreeBuilder.cs" />
+    <Compile Include="ElementTree\MaxTree\Filter\IMaxTreeFilter.cs" />
+    <Compile Include="ElementTree\MaxTree\IMaxTreeNode.cs" />
+    <Compile Include="ElementTree\MaxTree\Implementation\MaxTree3DAutoDualFloat.cs" />
+    <Compile Include="ElementTree\MaxTree\ComparerArrayIndex.cs" />
+    <Compile Include="ElementTree\MaxTree\Implementation\MaxTreeAutoDual.cs" />
+    <Compile Include="ElementTree\MaxTree\Implementation\MaxTreeFloat3DFeaturesDouble.cs" />
+    <Compile Include="ElementTree\MaxTree\Implementation\MaxTreeFloat3DFeaturesFloat.cs" />
+    <Compile Include="ElementTree\MaxTree\Implementation\ReporterPart.cs" />
+    <Compile Include="ElementTree\MaxTree\MaxTree.cs" />
+    <Compile Include="ElementTree\MaxTree\MaxTreeBuilderMultiQueue.cs" />
+    <Compile Include="ElementTree\MaxTree\Filter\MaxTreeFilterAbsorbing.cs" />
+    <Compile Include="ElementTree\MaxTree\MaxTreeNode.cs" />
+    <Compile Include="Filter\FilterAlfaPartitionMean.cs" />
+    <Compile Include="Filter\FilterAutoDualSize.cs" />
+    <Compile Include="ElementTree\MaxTree\Filter\FilterMinimalSize.cs" />
+    <Compile Include="ColorFunction\FunctionFloat32ToColorASIST.cs.cs" />
+    <Compile Include="IElementDomain.cs" />
+    <Compile Include="Image\IImageRaster1D.cs" />
+    <Compile Include="Image\ImageRaster1D.cs" />
+    <Compile Include="Image\ImageRaster2DWrapperImageSpace4D.cs" />
+    <Compile Include="Image\ImageRaster2DWrapperSlice4D.cs" />
+    <Compile Include="Image\ImageRaster3DArrayWrapper.cs" />
+    <Compile Include="Image\ImageSpace3DCast.cs" />
+    <Compile Include="Image\IImageSpace3D.cs" />
+    <Compile Include="Image\ImageRaster4D.cs" />
+    <Compile Include="Image\IImageRaster4D.cs" />
+    <Compile Include="Image\IImageSpace.cs" />
+    <Compile Include="Image\ImageRaster3D.cs" />
+    <Compile Include="Image\ImageRaster2DWrapperSlice3D.cs" />
+    <Compile Include="Image\ImageRaster.cs" />
+    <Compile Include="Image\IImageRaster3D.cs" />
+    <Compile Include="Image\ImageSpace2D.cs" />
+    <Compile Include="Image\IImage.cs" />
+    <Compile Include="Image\IImageRaster.cs" />
+    <Compile Include="Image\ImageRasterWrapperStack.cs" />
+    <Compile Include="Image\ImageSpace3DFloatLinear.cs" />
+    <Compile Include="Image\Raster\Raster3DIntegerSub.cs" />
+    <Compile Include="Image\Topology\TopologyElementRaster2D8Connectivity.cs" />
+    <Compile Include="Image\Topology\TopologyElementRaster3D26Connectivity.cs" />
+    <Compile Include="Image\Topology\ITopologyElementMetric.cs" />
+    <Compile Include="Image\Raster\ARasterInteger.cs" />
+    <Compile Include="Image\Raster\IRaster.cs" />
+    <Compile Include="Image\Raster\IRasterInteger.cs" />
+    <Compile Include="Image\Raster\IRaster1DInteger.cs" />
+    <Compile Include="Image\Raster\IRaster2DInteger.cs" />
+    <Compile Include="Image\Raster\IRaster3DInteger.cs" />
+    <Compile Include="Image\Raster\IRaster4DInteger.cs" />
+    <Compile Include="Image\Raster\Raster1DInteger.cs" />
+    <Compile Include="Image\Raster\Raster2DInteger.cs" />
+    <Compile Include="Image\Raster\Raster3DInteger.cs" />
+    <Compile Include="Image\Raster\Raster4DInteger.cs" />
+    <Compile Include="Image\Topology\ITopologyElement.cs" />
+    <Compile Include="Image\Topology\ITopologyElementEdge.cs" />
+    <Compile Include="Image\Topology\TopologyElementRaster4D8Connectivity.cs" />
+    <Compile Include="Rendering\Raster\RendererImageSpace4DSliceWrapper.cs" />
+    <Compile Include="SamplingStrategy\ISamplingStrategy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\IRenderer2D.cs" />
+    <Compile Include="Rendering\IRendererBitmapFast.cs" />
+    <Compile Include="Rendering\IRendererImageSource.cs" />
+    <Compile Include="Rendering\IShaderBitmapFast.cs" />
+    <Compile Include="Rendering\Points\RendererPoints.cs" />
+    <Compile Include="Rendering\Renderer2DIdentity.cs" />
+    <Compile Include="Rendering\RendererBitmapFast.cs" />
+    <Compile Include="Rendering\ShaderBitmapFastOverlay.cs" />
+    <Compile Include="Rendering\RendererBitmapSource.cs" />
+    <Compile Include="Rendering\Raster\RendererImageRaster4DSliceWrapper.cs" />
+    <Compile Include="Rendering\RendererSparce\Renderer2DProjectionBool.cs" />
+    <Compile Include="Rendering\Raster\RendererImageRaster3DToBitmapMask3D.cs" />
+    <Compile Include="Rendering\IRendererBitmap.cs" />
+    <Compile Include="Rendering\Raster\RendererImageRaster3DToBitmapZMean.cs" />
+    <Compile Include="Rendering\Raster\RendererImageRaster3DToBitmapSlice.cs" />
+    <Compile Include="Rendering\Projection\ARendererImageSpace3DFloatProjection.cs" />
+    <Compile Include="Rendering\Projection\Renderer3DSmart.cs" />
+    <Compile Include="Rendering\Projection\RendererSpaceProjectionFirstAbove.cs" />
+    <Compile Include="Rendering\Projection\RendererSpaceProjectionMIP.cs" />
+    <Compile Include="Rendering\Projection\RendererImageSpace3DFloatZMIP.cs" />
+    <Compile Include="Rendering\Raster\RendererImageRaster3DToBitmapZMIP.cs" />
+    <Compile Include="Rendering\Raster\RendererImageRasterToBitmap.cs" />
+    <Compile Include="Rendering\Raster\RendererImageSpaceFloatOrthogonal.cs" />
+    <Compile Include="Rendering\RendererBitmapSourceDefault.cs" />
+    <Compile Include="SamplingStrategy\SamplingStrategy.cs" />
+    <Compile Include="Skeletonization\EulerLookupTable.cs" />
+    <Compile Include="Skeletonization\Skeletonize3D.cs" />
+    <Compile Include="Skeletonization\VesselGraph.cs" />
+    <Compile Include="Skeletonization\MedialAxisFinder.cs" />
+    <Compile Include="ShapeTree\ShapeTree.cs" />
+    <Compile Include="TextureGeneration\TextureGeneratorKozzion.cs" />
+    <Compile Include="Tools\StructuringElement3D.cs" />
+    <Compile Include="Tools\ToolsColor.cs" />
+    <Compile Include="Tools\ToolsDistance.cs" />
+    <Compile Include="Tools\ToolsRendering.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorFunction\FunctionBoolToColor.cs" />
+    <Compile Include="ColorFunction\FunctionColorToFloat32Gray.cs" />
+    <Compile Include="ColorFunction\FunctionColorToUInt32Gray.cs" />
+    <Content Include="ColorFunction\ColorTools.java" />
+    <Compile Include="ColorFunction\FunctionFloat32ToColorGray.cs" />
+    <Compile Include="ColorFunction\FunctionFloat32ToColorJet.cs" />
+    <Compile Include="ColorFunction\GrayType.cs" />
+    <Content Include="ColorFunction\IntegerToBooleanConverterTemplateOtsu.java" />
+    <Compile Include="ColorFunction\FunctionUInt32ToColorWindow.cs" />
+    <Compile Include="ElementTree\MaxTree\MaxTreeBuilderSingleQueue.cs" />
+    <Compile Include="ElementTree\AlphaPartition\Implementation\AlphaPartitionTree3D.cs" />
+    <Content Include="ElementTree\AlphaPartition\Implementation\EdgeExtracterDomainIntegerImageFloat.java" />
+    <Content Include="ElementTree\AlphaPartition\Implementation\EdgeExtracterDomainIntegerImageFloatArray.java" />
+    <Content Include="ElementTree\AlphaPartition\Implementation\EdgeExtracterIntegerRasterFloatImage3D.java" />
+    <Compile Include="ElementTree\AlphaPartition\AlphaPartitionTreeBuilderMinTree.cs" />
+    <Content Include="ElementTree\AlphaPartition\EdgeFunction\EdgeFunctionFloatArrayEMDAUC.java" />
+    <Content Include="ElementTree\AlphaPartition\EdgeFunction\EdgeFunctionFloatArrayHamming.java" />
+    <Content Include="ElementTree\AlphaPartition\EdgeFunction\EdgeFunctionFloatDifference.java" />
+    <Content Include="ElementTree\AlphaPartition\EdgeFunction\IEdgeFunctionFloat.java" />
+    <Content Include="ElementTree\AlphaPartition\EdgeFunction\IEdgeFunctionFloatArray.java" />
+    <Content Include="ElementTree\AlphaPartition\EdgeFunction\IEdgeFunctionInteger.java" />
+    <Compile Include="ElementTree\AlphaPartition\IAlphaPartitionTreeBuilder.cs" />
+    <Compile Include="ElementTree\Feature\FeatureGeneratorElementNode3DFloat32.cs" />
+    <Content Include="ElementTree\Feature\FeatureGeneratorElementNode3DSlow.java" />
+    <Compile Include="ElementTree\Feature\IFeatureGeneratorFloat.cs" />
+    <Compile Include="ElementTree\Feature\ToolsMathMatrix3Float32.cs" />
+    <Content Include="ElementTree\Feature\MomentGeneratorDouble.java" />
+    <Content Include="ElementTree\Feature\MomentGeneratorFloat2D.java" />
+    <Content Include="ElementTree\Feature\MomentGeneratorFloat3D.java" />
+    <Content Include="ElementTree\Feature\MomentTools.java" />
+    <Compile Include="ElementTree\IElementTreeNode.cs" />
+    <Compile Include="ElementTree\IElementTree..cs" />
+    <Content Include="Image\ALongRasterImage.java" />
+    <Content Include="Image\ALongRasterIntegerImage.java" />
+    <Content Include="Image\CyclicFloatRgbRasterImage2D.java" />
+    <Content Include="Image\FloatSpaceFloatImage4DDummy.java" />
+    <Compile Include="Image\IImageSpace4D.cs" />
+    <Compile Include="Image\IImageRaster2D.cs" />
+    <Content Include="Image\IRasterIntegerImage3D.java" />
+    <Compile Include="Image\ImageRaster2D.cs" />
+    <Content Include="Image\IntegerRasterIntegerStructuringElement.java" />
+    <Content Include="Image\MaskedIntegerImage2D.java" />
+    <Compile Include="Image\Topology\ATopologyElementRaster.cs" />
+    <Compile Include="Image\Topology\TopologyElementEdgeRaster1D.cs" />
+    <Compile Include="Image\Topology\TopologyElementEdgeRaster2D4Connectivity.cs" />
+    <Compile Include="Image\Topology\TopologyElementEdgeRaster3D6Connectivity.cs" />
+    <Compile Include="Image\Topology\TopologyElementRaster1D.cs" />
+    <Compile Include="Image\Topology\TopologyElementRaster2D4Connectivity.cs" />
+    <Compile Include="Image\Topology\TopologyElementRaster3D6Connectivity.cs" />
+    <Compile Include="Image\Topology\ITopologyElementEdgeRaster.cs" />
+    <Compile Include="Image\Topology\ITopologyElementRaster.cs" />
+    <Compile Include="Tools\ToolsIOImageRaster.cs" />
+    <Content Include="TextureGeneration\ITextureGenerator.java" />
+    <Content Include="TextureGeneration\TexGen.java" />
+    <Content Include="TextureGeneration\TexGenParameters.java" />
+    <Content Include="TextureGeneration\TextureGeneratorWeiLevoy.java" />
+    <Compile Include="Tools\ToolsImageRaster.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kozzioncore\KozzionCore.csproj">
+      <Project>{8102cced-b941-4766-aff8-7c2282506932}</Project>
+      <Name>KozzionCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kozzionmathematics\KozzionMathematics.csproj">
+      <Project>{46a68a25-5d99-45e3-b206-0c1c03ceba32}</Project>
+      <Name>KozzionMathematics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
