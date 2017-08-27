@@ -6,7 +6,7 @@ using System;
 
 namespace KozzionMachineLearning.Clustering
 {
-	public sealed class CentroidCalculatorMeanFloatArray :  IFunction<IList<float []>, ICentroidDistance<float, float>>
+	public sealed class CentroidCalculatorMeanFloatArray :  IFunction<IList<float []>, ICentroidDistance<float>>
 	{
         public string FunctionType { get { return "CentroidCalculatorMeanFloatArray"; } }
 
@@ -18,7 +18,7 @@ namespace KozzionMachineLearning.Clustering
             this.distance_function = distance_function;
         }
 
-        public ICentroidDistance<float, float> Compute(IList<float []> instance_feature_list)
+        public ICentroidDistance<float> Compute(IList<float []> instance_feature_list)
 		{
             int feature_count = instance_feature_list[0].Length;
             float[] location = new float[feature_count];

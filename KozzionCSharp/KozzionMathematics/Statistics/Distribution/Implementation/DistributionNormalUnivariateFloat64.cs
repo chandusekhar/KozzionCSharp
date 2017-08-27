@@ -7,8 +7,8 @@ namespace KozzionMathematics.Statistics.Distribution
 {
     public class DistributionNormalUnivariateFloat64 : IDistribution<double, double>
     {
-        public float Mean { get; private set; }
-        public float StandardDeviation { get; private set; }
+        public double Mean { get; private set; }
+        public double StandardDeviation { get; private set; }
 
         public double[] Domain
         {

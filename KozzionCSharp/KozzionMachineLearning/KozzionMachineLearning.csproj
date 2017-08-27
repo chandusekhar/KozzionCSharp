@@ -162,6 +162,7 @@
     <Compile Include="Clustering\LeaderFollower\TemplateClusteringLeaderFollowerNominal.cs" />
     <Compile Include="Clustering\TemplateCentroidCalculatorMeanFloatArray.cs" />
     <Compile Include="Clustering\TemplateCentroidCalculatorNominal.cs" />
+    <Compile Include="DataSet\DataInstance.cs" />
     <Compile Include="DataSet\DataSetHybrid.cs" />
     <Compile Include="Method\LVQ\ModelLVQ.cs" />
     <Compile Include="Method\DecisionTrees\ModelDiscreteC45Default.cs" />

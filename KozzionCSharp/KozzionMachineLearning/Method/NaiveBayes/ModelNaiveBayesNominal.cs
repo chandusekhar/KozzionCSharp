@@ -11,7 +11,7 @@ using KozzionMachineLearning.DataSet;
 namespace KozzionMachineLearning.Method.NaiveBayes
 {
     public class ModelNaiveBayesNominal:
-        AModelLikelihood<int, int, double>
+        AModelLikelihood<int, int>
     {
         private IFunction<int, double> [,]  marginals;
         private double[] class_priors;

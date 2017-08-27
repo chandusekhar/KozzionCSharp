@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace KozzionMachineLearning.Model
 {
-    public abstract class AModelLikelihood<DomainType, LabelType, LikelihoodType> : 
+    public abstract class AModelLikelihood<DomainType, LabelType> : 
         AModelDiscrete<DomainType, LabelType>, 
-        IModelLikelihood<DomainType, LabelType, LikelihoodType>
-        where LikelihoodType : IComparable<LikelihoodType>
+        IModelLikelihood<DomainType, LabelType>
     {
         public AModelLikelihood(IDataContext data_context, string model_type)
             : base(data_context, model_type)
@@ -26,7 +25,7 @@ namespace KozzionMachineLearning.Model
             //return DataContext.GetLabelValue(ToolsMathCollection.MaxIndex(GetLikelihoods(instance_features)));
         }
 
-        public abstract LikelihoodType[] GetLikelihoods(DomainType [] instance_features);
+        public abstract double[] GetLikelihoods(DomainType [] instance_features);
 
 
     

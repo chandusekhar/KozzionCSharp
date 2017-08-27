@@ -6,9 +6,8 @@ using KozzionMathematics.Function;
 
 namespace KozzionMachineLearning.Clustering.Hierarchy
 {
-    public class TemplateClusteringHierarchyCompleteLink<DomainType, DissimilarityType, DataSetType> :
-            ITemplateClusteringHierarchy<DomainType, DissimilarityType, ICentroidDistance<DomainType, DissimilarityType>, DataSetType>
-            where DissimilarityType : IComparable<DissimilarityType>
+    public class TemplateClusteringHierarchyCompleteLink<DomainType, DataSetType> :
+            ITemplateClusteringHierarchy<DomainType, ICentroidDistance<DomainType>, DataSetType>
     {
 
         //IDEA: figure out the CLINK algoritm
@@ -18,7 +17,7 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
             // TODO Auto-generated constructor stub
         }
 
-        public IClusteringHierarchy<DomainType, DissimilarityType, ICentroidDistance<DomainType, DissimilarityType>> Cluster(DataSetType data_set)
+        public IClusteringHierarchy<DomainType, ICentroidDistance<DomainType>> Cluster(DataSetType data_set)
         {
             throw new NotImplementedException();
         }

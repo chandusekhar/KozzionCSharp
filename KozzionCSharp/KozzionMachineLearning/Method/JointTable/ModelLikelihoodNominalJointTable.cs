@@ -8,7 +8,7 @@ using System;
 namespace KozzionMachineLearning.Method.JointTable
 {
     public class ModelLikelihoodNominalJointTable<LabelType> : 
-        AModelLikelihood<int, LabelType, double>
+        AModelLikelihood<int, LabelType>
     {
         private double[] priors;
         private IDictionary<int[], int[]> occurences;

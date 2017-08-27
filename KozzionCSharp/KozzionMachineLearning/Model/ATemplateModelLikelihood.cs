@@ -11,9 +11,9 @@ namespace KozzionMachineLearning.Model
         ITemplateModelLikelihood<DomainType, LabelType>
 
     {
-        public ReportLikelihood<DomainType, LabelType, double> GenerateAndTestLikelihood(IDataSet<DomainType, LabelType> training_set, IDataSet<DomainType, LabelType> test_set)
+        public ReportLikelihood<DomainType, LabelType> GenerateAndTestLikelihood(IDataSet<DomainType, LabelType> training_set, IDataSet<DomainType, LabelType> test_set)
         {
-            IModelLikelihood<DomainType, LabelType, double> model = GenerateModelLikelihood(training_set);
+            IModelLikelihood<DomainType, LabelType> model = GenerateModelLikelihood(training_set);
             double[][] likelihoods = new double[test_set.InstanceCount][];
             LabelType[] labels = new LabelType[test_set.InstanceCount];
             for (int instance_index = 0; instance_index < test_set.InstanceCount; instance_index++)
@@ -21,7 +21,7 @@ namespace KozzionMachineLearning.Model
                 likelihoods[instance_index] = model.GetLikelihoods(test_set.GetInstanceFeatureData(instance_index));
             }
        
-            return new ReportLikelihood<DomainType, LabelType, double>(new AlgebraRealFloat64(), model, likelihoods, labels);
+            return new ReportLikelihood<DomainType, LabelType>(model, likelihoods, labels);
         }
 
         public override IModelDiscrete<DomainType, LabelType> GenerateModelDiscrete(IDataSet<DomainType, LabelType> training_set)
@@ -29,7 +29,7 @@ namespace KozzionMachineLearning.Model
             return GenerateModelLikelihood(training_set);
         }
 
-        public abstract IModelLikelihood<DomainType, LabelType, double> GenerateModelLikelihood(IDataSet<DomainType, LabelType> training_set);
+        public abstract IModelLikelihood<DomainType, LabelType> GenerateModelLikelihood(IDataSet<DomainType, LabelType> training_set);
     }
 
    

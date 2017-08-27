@@ -15,7 +15,7 @@ namespace KozzionMachineLearning.Method.SupportVectorMachine
 {
     public class ModelLibSVMCSVC : 
         AModelDiscrete<double, int>, 
-        IModelLikelihood<double, int, double>
+        IModelLikelihood<double, int>
     {
         private C_SVC svm;
 
@@ -44,7 +44,7 @@ namespace KozzionMachineLearning.Method.SupportVectorMachine
 
 
 
-        public static IModelLikelihood<double, int, double> Read(BinaryReader reader)
+        public static IModelLikelihood<double, int> Read(BinaryReader reader)
         {
             byte[] bytes = reader.ReadByteArray1D();
             string temp_file_name = Path.GetTempFileName();

@@ -9,7 +9,7 @@ using KozzionMathematics.Function.Implementation.Distance;
 
 namespace KozzionMachineLearning.Clustering
 {
-    public class TemplateCentroidCalculatorMeanFloatArray : ITemplateCentroidCalculator<float, ICentroidDistance<float, float>>
+    public class TemplateCentroidCalculatorMeanFloatArray : ITemplateCentroidCalculator<float, ICentroidDistance<float>>
     {
         private IFunctionDistance<float[], float> distance_function;
 
@@ -18,7 +18,7 @@ namespace KozzionMachineLearning.Clustering
             this.distance_function = distance_function;
         }
 
-        public IFunction<IList<float[]>, ICentroidDistance<float, float>> Generate(IDataContext data_context)
+        public IFunction<IList<float[]>, ICentroidDistance<float>> Generate(IDataContext data_context)
         {
             return new CentroidCalculatorMeanFloatArray(distance_function);
         }

@@ -6,7 +6,7 @@ using KozzionCore.Tools;
 
 namespace KozzionMachineLearning.Clustering
 {
-    public class CentroidFloat32 : ICentroidDistance<float, float>
+    public class CentroidFloat32 : ICentroidDistance<float>
     {
         public IList<float[]> Members { get; private set; }       
 
@@ -21,7 +21,7 @@ namespace KozzionMachineLearning.Clustering
             this.location = ToolsCollection.Copy(location);
         }
 
-        public float ComputeDistance(float[] instance_features)
+        public double ComputeDistance(float[] instance_features)
         {
             return distance_function.Compute(this.location, instance_features);
         }

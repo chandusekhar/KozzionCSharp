@@ -87,9 +87,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Dataset\LoadDataSetTest.cs" />
-    <Compile Include="Methods\simulated_anealing\SimulatedAnealingTest.cs" />
     <Compile Include="Methods\SLIC\TestSLIC3D.cs" />
-    <Compile Include="Methods\support_vector_machine\SupportVecotrMachineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

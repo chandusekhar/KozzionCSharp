@@ -9,15 +9,14 @@ using System.Security.Cryptography;
 namespace KozzionMachineLearning.Clustering.KMeans
 {
 
-    public class TemplateClusteringKMeans<DomainType, DistanceType, DataSetType> : ITemplateClusteringCentroid<DomainType, DistanceType, IDataSet<DomainType>>
-        where DistanceType : IComparable<DistanceType>
+    public class TemplateClusteringKMeans<DomainType, DataSetType> : ITemplateClusteringCentroid<DomainType, IDataSet<DomainType>>
     {
-        private ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType, DistanceType>> centroid_calculator_template;
+        private ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType>> centroid_calculator_template;
         private int desired_cluster_count;
         private int d_max_iteration_count;
 
         public TemplateClusteringKMeans(
-            ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType, DistanceType>> centroid_calculator_template,
+            ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType>> centroid_calculator_template,
             int cluster_count,
             int max_iteration_count)
         {
@@ -28,7 +27,7 @@ namespace KozzionMachineLearning.Clustering.KMeans
 
 
         public TemplateClusteringKMeans(
-            ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType, DistanceType>> centroid_calculator_template,
+            ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType>> centroid_calculator_template,
             int cluster_count)
             : this(centroid_calculator_template, cluster_count, int.MaxValue)
         {
@@ -39,8 +38,8 @@ namespace KozzionMachineLearning.Clustering.KMeans
      
         private void Cluster(
             IList<DomainType []> instance_features_list,
-            IFunction<IList<DomainType[]>, ICentroidDistance<DomainType, DistanceType>> centroid_calculator,
-            IList<ICentroidDistance<DomainType, DistanceType>> centroids)
+            IFunction<IList<DomainType[]>, ICentroidDistance<DomainType>> centroid_calculator,
+            IList<ICentroidDistance<DomainType>> centroids)
         {
 
             int[] centroid_assignment = new int[instance_features_list.Count];       
@@ -56,11 +55,11 @@ namespace KozzionMachineLearning.Clustering.KMeans
                     DomainType [] instance_features = instance_features_list[index_instance];
 
                     int best_centroid_index = 0;
-                    DistanceType best_distance = centroids[0].ComputeDistance(instance_features);
+                    double best_distance = centroids[0].ComputeDistance(instance_features);
 
                     for (int centroid_index = 1; centroid_index < centroids.Count; centroid_index++)
                     {
-                        DistanceType distance = centroids[centroid_index].ComputeDistance(instance_features);
+                        double distance = centroids[centroid_index].ComputeDistance(instance_features);
 
                         if (distance.CompareTo(best_distance) == -1)
                         {
@@ -103,12 +102,12 @@ namespace KozzionMachineLearning.Clustering.KMeans
             }
         }
     
-        public IClusteringCentroid<DomainType, DistanceType> Cluster(IDataSet<DomainType> data_set)
+        public IClusteringCentroid<DomainType> Cluster(IDataSet<DomainType> data_set)
         {
-            IFunction<IList<DomainType[]>, ICentroidDistance<DomainType, DistanceType>> centroid_calculator = centroid_calculator_template.Generate(data_set.DataContext);
+            IFunction<IList<DomainType[]>, ICentroidDistance<DomainType>> centroid_calculator = centroid_calculator_template.Generate(data_set.DataContext);
             IList<DomainType[]> instance_features_list = data_set.FeatureData;
             RandomNumberGenerator generator = new RNGCryptoServiceProvider();
-            IList<ICentroidDistance<DomainType, DistanceType>> centroids = new List<ICentroidDistance<DomainType, DistanceType>>();
+            IList<ICentroidDistance<DomainType>> centroids = new List<ICentroidDistance<DomainType>>();
             int[] permutation = generator.RandomPermutation(instance_features_list.Count);
 
             for (int centroid_index = 0; centroid_index < this.desired_cluster_count; centroid_index++)
@@ -123,7 +122,7 @@ namespace KozzionMachineLearning.Clustering.KMeans
             }
 
             Cluster(instance_features_list, centroid_calculator, centroids);
-            return new ClusteringCentroid<DomainType, DistanceType>(data_set.DataContext, centroids);
+            return new ClusteringCentroid<DomainType>(data_set.DataContext, centroids);
         }
 
    

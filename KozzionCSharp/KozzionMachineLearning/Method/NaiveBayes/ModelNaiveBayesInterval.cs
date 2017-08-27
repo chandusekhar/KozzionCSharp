@@ -16,7 +16,7 @@ namespace KozzionMachineLearning.Method.NaiveBayes
 {
 
     public class ModelNaiveBayesInterval :
-        AModelLikelihood<double, int, double>
+        AModelLikelihood<double, int>
     {
         private IFunction<double, double>[,] marginals;
         private double[] class_priors;
@@ -64,7 +64,7 @@ namespace KozzionMachineLearning.Method.NaiveBayes
         }
 
 
-        internal static IModelLikelihood<double, int, double> Read(BinaryReader reader)
+        internal static IModelLikelihood<double, int> Read(BinaryReader reader)
         {
             IDataContext data_context = DataSet.DataContext.Read(reader);
             double[] class_priors = reader.ReadFloat64Array1D();

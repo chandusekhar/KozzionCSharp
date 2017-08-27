@@ -180,12 +180,12 @@ namespace KozzionMachineLearningCL
         {
             int cluster_count = 10;
             int instance_count = training_set.InstanceCount;
-            ITemplateClusteringCentroid<int, double, IDataSet<int>> template_cluster = new TemplateClusteringKMeansNominal(cluster_count);
+            ITemplateClusteringCentroid<int, IDataSet<int>> template_cluster = new TemplateClusteringKMeansNominal(cluster_count);
             TemplateDimensionReductionPCADefault template_pca = new TemplateDimensionReductionPCADefault(3);
             IDataSet<int> training_set_unlabeled = training_set;
 
 
-            IClusteringCentroid<int, double> clustering = template_cluster.Cluster(training_set_unlabeled);
+            IClusteringCentroid<int> clustering = template_cluster.Cluster(training_set_unlabeled);
 
             double[][] transformed_data1 = new double[instance_count][];
             for (int instance_index = 0; instance_index < instance_count; instance_index++)

@@ -11,10 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KozzionMathematicsTest.Solvers
+namespace kozzionmathematicstest.Numeric.Solvers.Linear
 {
     [TestClass]
-    public class TestGMRES
+    public class SolverLinearGMRESTest
     {
         //from matlab test grmes
         [TestMethod]

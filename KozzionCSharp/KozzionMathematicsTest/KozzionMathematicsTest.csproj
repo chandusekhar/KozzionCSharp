@@ -93,13 +93,15 @@
   <ItemGroup>
     <Compile Include="Algebra\TestAlgebraLinear.cs" />
     <Compile Include="Algebra\TestAlgebraLinearReal64MathNet.cs" />
+    <Compile Include="Functions\Implementation\Interpolation\FunctionInterpolationCubicTest.cs" />
     <Compile Include="Functions\Implementation\Interpolation\FunctionInterpolationLinearTest.cs" />
     <Compile Include="Functions\Polynomial\TestPolynomialInt32.cs" />
     <Compile Include="Numeric\DeconvolutionKrylovTest.cs" />
     <Compile Include="Numeric\Minimizer\MinimizerNelderMeadSimplexTest.cs" />
+    <Compile Include="Numeric\Solvers\Linear\SolverLinearGMRESMathNetTest.cs" />
     <Compile Include="Random\TestRandomNumberGeneratorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Solvers\TestGMRES.cs" />
+    <Compile Include="Numeric\Solvers\Linear\SolverLinearGMRESTest.cs" />
     <Compile Include="Statistics\Test\MultiSample\TestANOVARepeatedMeasuresTest.cs" />
     <Compile Include="Statistics\Test\MultiSample\TestBartlettTest.cs" />
     <Compile Include="Statistics\Test\MultiSample\TestANOVAOneWayTest.cs" />

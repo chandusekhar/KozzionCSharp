@@ -306,16 +306,13 @@ namespace KozzionCore.Tools
         //    return target;
         //}
 
-        public static IReadOnlyList<ArrayType> Select<ArrayType>(
-            IReadOnlyList<ArrayType> source,
+        public static ArrayType[] Select<ArrayType>(
+            IList<ArrayType> source,
             int offset,
             int count)
         {
             ArrayType[] target = new ArrayType[count];
-            Parallel.For(0, count, index =>
-            {
-                target[index] = source[index + offset];
-            });
+            SelectRBA(source, target, offset, count);
             return target;
         }
 
@@ -324,31 +321,23 @@ namespace KozzionCore.Tools
             int offset,
             int count)
         {
-            ArrayType[] copy = new ArrayType[count];
-            Array.Copy(array_source, offset, copy, 0, count);
-            return copy;
+            ArrayType[] target = new ArrayType[count];
+            Array.Copy(array_source, offset, target, 0, count);
+            return target;
         }
 
-        public static ArrayType[] Select<ArrayType>(
-             IList<ArrayType> source,
-             int offset,
-             int count)
-        {
-            ArrayType[] destination = new ArrayType[count];
-            SelectRBA(source, destination, offset, count);
-            return destination;
-        }
+   
 
         public static void SelectRBA<ArrayType>(
              IList<ArrayType> source,
-             IList<ArrayType> destination,
+             IList<ArrayType> target,
              int offset,
              int count)
         {
-            for (int index = 0; index < count; index++)
+            Parallel.For(0, count, index =>
             {
-                destination[index] = source[index + offset];
-            }
+                target[index] = source[index + offset];
+            });
         }
 
         public static ArrayType[] Select<ArrayType>(

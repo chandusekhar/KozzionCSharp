@@ -2,9 +2,8 @@
 
 namespace KozzionMachineLearning.Model
 {
-    public interface IModelLikelihood<DomainType, LabelType, LikelihoodType> : IModelDiscrete<DomainType, LabelType>
-        where LikelihoodType :IComparable<LikelihoodType>
+    public interface IModelLikelihood<DomainType, LabelType> : IModelDiscrete<DomainType, LabelType>
     {        
-        LikelihoodType[] GetLikelihoods(DomainType [] instance_features);       
+        double[] GetLikelihoods(DomainType [] instance_features);       
     }
 }

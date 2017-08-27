@@ -11,7 +11,7 @@ namespace KozzionMachineLearning.Method.NaiveBayes
 {
     public class TemplateModelNaiveBayesInterval : ATemplateModelLikelihood<double, int>
     {
-        public override IModelLikelihood<double, int, double> GenerateModelLikelihood(IDataSet<double, int> training_set)
+        public override IModelLikelihood<double, int> GenerateModelLikelihood(IDataSet<double, int> training_set)
         {
             int label_value_count = training_set.DataContext.GetLabelDescriptor(0).ValueCount;
             int[] label_data = training_set.GetLabelDataColumn(0);

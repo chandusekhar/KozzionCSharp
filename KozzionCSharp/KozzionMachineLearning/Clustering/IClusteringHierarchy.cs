@@ -2,10 +2,9 @@ using System;
 
 namespace KozzionMachineLearning.Clustering
 {
-	public interface IClusteringHierarchy<DomainType, DissimilarityType, CentroidType> : IClustering
-        where DissimilarityType : IComparable<DissimilarityType>
+	public interface IClusteringHierarchy<DomainType, CentroidType> : IClustering
 	{
-        IClusteringCentroid<DomainType, DissimilarityType> GetCentroidClustering(DissimilarityType level);
+        IClusteringCentroid<DomainType> GetCentroidClustering(double level);
     
     }
 }

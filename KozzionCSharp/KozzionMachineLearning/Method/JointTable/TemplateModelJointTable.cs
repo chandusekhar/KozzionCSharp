@@ -15,7 +15,7 @@ namespace KozzionMachineLearning.Method.JointTable
         {
         }
 
-        public override IModelLikelihood<int, int, double> GenerateModelLikelihood (IDataSet<int, int> training_set)
+        public override IModelLikelihood<int, int> GenerateModelLikelihood (IDataSet<int, int> training_set)
         {
             //TODO this asumes our label is finite and what not, maybe a bit silly
             double[] priors = new double[training_set.DataContext.GetLabelDescriptor(0).ValueCount];

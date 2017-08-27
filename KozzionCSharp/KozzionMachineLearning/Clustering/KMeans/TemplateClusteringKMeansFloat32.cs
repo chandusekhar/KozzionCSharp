@@ -4,7 +4,7 @@ using KozzionMathematics.Function.Implementation.Distance;
 
 namespace KozzionMachineLearning.Clustering.KMeans
 {
-    public class TemplateClusteringKMeansFloat32 : TemplateClusteringKMeans<float, float, IDataSet<float>>
+    public class TemplateClusteringKMeansFloat32 : TemplateClusteringKMeans<float, IDataSet<float>>
 	{
 
 		public TemplateClusteringKMeansFloat32 (

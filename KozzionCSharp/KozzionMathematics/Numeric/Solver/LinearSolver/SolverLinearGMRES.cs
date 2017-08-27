@@ -66,6 +66,7 @@ namespace KozzionMathematics.Numeric.linear_solver
                 V = tuple.Item1;
                 H = tuple.Item2;
                 // compute the nul vector of H'
+ 
 
                 AMatrix<MatrixDataType> gk = ((gamma * H.GetColumnSection(0, iteration + 1, iteration)) / H.GetElement(iteration + 1, iteration));
                 gamma = gamma.AppendColumns(gk * -1.0);

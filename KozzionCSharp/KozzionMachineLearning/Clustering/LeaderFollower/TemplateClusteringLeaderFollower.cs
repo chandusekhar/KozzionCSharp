@@ -6,27 +6,26 @@ using KozzionMachineLearning.Clustering.KMeans;
 
 namespace KozzionMachineLearning.Clustering.LeaderFollower
 {
-public class TemplateClusteringLeaderFollower<DomainType, DistanceType, DataSetType> : ITemplateClusteringCentroid<DomainType, DistanceType, IDataSet<DomainType>>
-	where DistanceType : IComparable<DistanceType>
+public class TemplateClusteringLeaderFollower<DomainType, DataSetType> : ITemplateClusteringCentroid<DomainType, IDataSet<DomainType>>
 {
-        private ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType, DistanceType>> centroid_calculator_template;
-        private DistanceType critical_distance;
+        private ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType>> centroid_calculator_template;
+        private double critical_distance;
 
         public TemplateClusteringLeaderFollower(
-            ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType, DistanceType>> centroid_calculator_template, 
-            DistanceType critical_distance)
+            ITemplateCentroidCalculator<DomainType, ICentroidDistance<DomainType>> centroid_calculator_template,
+            double critical_distance)
         {
             this.centroid_calculator_template = centroid_calculator_template;
             this.critical_distance = critical_distance;
         }
 
-        public IClusteringCentroid<DomainType, DistanceType> Cluster(IDataSet<DomainType> data_set)
+        public IClusteringCentroid<DomainType> Cluster(IDataSet<DomainType> data_set)
         {
 
-            IFunction<IList<DomainType[]>, ICentroidDistance<DomainType, DistanceType>> centroid_calculator = centroid_calculator_template.Generate(data_set.DataContext);
+            IFunction<IList<DomainType[]>, ICentroidDistance<DomainType>> centroid_calculator = centroid_calculator_template.Generate(data_set.DataContext);
             IList<DomainType[]> instance_features_list = data_set.FeatureData;
             IList<IList<DomainType[]>> cluster_members = new List<IList<DomainType[]>>();
-            IList<ICentroidDistance<DomainType, DistanceType>> centroids = new List<ICentroidDistance<DomainType, DistanceType>>();
+            IList<ICentroidDistance<DomainType>> centroids = new List<ICentroidDistance<DomainType>>();
 
             // add first cluster
             cluster_members.Add(new List<DomainType[]>());
@@ -39,11 +38,11 @@ public class TemplateClusteringLeaderFollower<DomainType, DistanceType, DataSetT
                 DomainType[] instance_features = instance_features_list[index_instance];
 
                 int best_cluster_index = 0;
-                DistanceType best_distance = centroids[0].ComputeDistance(instance_features);
+                double best_distance = centroids[0].ComputeDistance(instance_features);
 
                 for (int cluster_index = 1; cluster_index < centroids.Count; cluster_index++)
                 {
-                    DistanceType distance = centroids[cluster_index].ComputeDistance(instance_features);
+                    double distance = centroids[cluster_index].ComputeDistance(instance_features);
 
                     if (distance.CompareTo(best_distance) == 1)
                     {
@@ -68,7 +67,7 @@ public class TemplateClusteringLeaderFollower<DomainType, DistanceType, DataSetT
                 }
             }
 
-            return new ClusteringCentroid<DomainType, DistanceType>(data_set.DataContext, centroids);
+            return new ClusteringCentroid<DomainType>(data_set.DataContext, centroids);
         }
     }
 }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace KozzionMachineLearning.Clustering
 {
-    public interface ITemplateClusteringCentroid<DomainType, DistanceType, DataSetType>
-        where DistanceType : IComparable<DistanceType>
+    public interface ITemplateClusteringCentroid<DomainType, DataSetType>
     {
-        IClusteringCentroid<DomainType, DistanceType> Cluster(DataSetType data_set);
+        IClusteringCentroid<DomainType> Cluster(DataSetType data_set);
     }
 }

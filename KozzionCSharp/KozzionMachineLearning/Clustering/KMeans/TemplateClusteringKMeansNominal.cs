@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KozzionMachineLearning.Clustering.KMeans
 {
-    public class TemplateClusteringKMeansNominal : TemplateClusteringKMeans<int, double, IDataSet<int>>
+    public class TemplateClusteringKMeansNominal : TemplateClusteringKMeans<int, IDataSet<int>>
     {
         public TemplateClusteringKMeansNominal(int desired_cluster_count)
             : base(new TemplateCentroidCalculatorNominal(), desired_cluster_count)

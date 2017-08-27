@@ -13,7 +13,7 @@ namespace KozzionMachineLearning.Method.NaiveBayes
     public class TemplateModelNaiveBayesNominal : ATemplateModelLikelihood<int, int>
     {    
 
-        public override IModelLikelihood<int, int, double> GenerateModelLikelihood(IDataSet<int, int> training_set)
+        public override IModelLikelihood<int, int> GenerateModelLikelihood(IDataSet<int, int> training_set)
         {
             int value_count = training_set.DataContext.LabelDescriptors[0].ValueCount;
             int [] label_data = training_set.GetLabelDataColumn(0);

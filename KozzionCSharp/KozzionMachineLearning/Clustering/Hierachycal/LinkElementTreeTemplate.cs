@@ -6,22 +6,21 @@ using KozzionMachineLearning.DataSet;
 
 namespace KozzionMachineLearning.Clustering.Hierarchy
 {
-	public class LinkElementTreeTemplate<DomainType, DissimilarityType>
-        where DissimilarityType : IComparable<DissimilarityType>
+	public class LinkElementTreeTemplate<DomainType>
 	{
         public int ClusterCount { get; private set; }
 		// Cases
 		private IList<DomainType[]> instance_features_list;
 
         // Path Compression
-        private Dictionary<int, NodeTreeLink<DissimilarityType>> top_assignments;
+        private Dictionary<int, NodeTreeLink<double>> top_assignments;
 
 		public LinkElementTreeTemplate(
 			IList<DomainType []> instance_features_list)
 		{
             this.instance_features_list = instance_features_list;
 			this.ClusterCount = instance_features_list.Count;
-            this.top_assignments = new Dictionary<int, NodeTreeLink<DissimilarityType>>();
+            this.top_assignments = new Dictionary<int, NodeTreeLink<double>>();
 
 		}
 
@@ -30,7 +29,7 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
 			return instance_features_list;
 		}
 
-		private NodeTreeLink<DissimilarityType> GetTopLevelNode(
+		private NodeTreeLink<double> GetTopLevelNode(
 			int index_element)
 		{
 			if (!top_assignments.ContainsKey(index_element))
@@ -39,7 +38,7 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
 			}
 			else
 			{
-				NodeTreeLink<DissimilarityType> node = top_assignments[index_element];
+				NodeTreeLink<double> node = top_assignments[index_element];
 				if (node.get_parent() == null)
 				{
 					return node;
@@ -58,12 +57,12 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
 		}
 
 		public void Merge(
-			DissimilarityType value,
+            double value,
 			int index_element_0,
 			int index_element_1)
 		{
-			NodeTreeLink<DissimilarityType> node_0 = GetTopLevelNode(index_element_0);
-			NodeTreeLink<DissimilarityType> node_1 = GetTopLevelNode(index_element_1);
+			NodeTreeLink<double> node_0 = GetTopLevelNode(index_element_0);
+			NodeTreeLink<double> node_1 = GetTopLevelNode(index_element_1);
 
 			if (node_0 == null)
 			{
@@ -71,14 +70,14 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
 				if (node_1 == null)
 				{
 					// if both nodes are the same do nothing other wize add a new node
-					NodeTreeLink<DissimilarityType> node_new = new NodeTreeLink<DissimilarityType>(value, index_element_0, index_element_1);
+					NodeTreeLink<double> node_new = new NodeTreeLink<double>(value, index_element_0, index_element_1);
 					top_assignments[index_element_0] = node_new;
 					top_assignments[index_element_1] = node_new;
                     ClusterCount--;
 				}
 				else
 				{
-					NodeTreeLink<DissimilarityType> node_new = new NodeTreeLink<DissimilarityType>(value, index_element_0, node_1);
+					NodeTreeLink<double> node_new = new NodeTreeLink<double>(value, index_element_0, node_1);
 					top_assignments[index_element_0] = node_new;
 					top_assignments[index_element_1] = node_new;
                     ClusterCount--;
@@ -89,7 +88,7 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
 				if (node_1 == null)
 				{
 					// if both nodes are the same do nothing other wize add a new node
-					NodeTreeLink<DissimilarityType> node_new = new NodeTreeLink<DissimilarityType>(value, index_element_1, node_0);
+					NodeTreeLink<double> node_new = new NodeTreeLink<double>(value, index_element_1, node_0);
 					top_assignments[index_element_0] = node_new;
 					top_assignments[index_element_1] = node_new;
                     ClusterCount--;
@@ -99,7 +98,7 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
 					// Both are noded
 					if (node_0 != node_1)
 					{
-						NodeTreeLink<DissimilarityType> node_new = new NodeTreeLink<DissimilarityType>(value, node_0, node_1);
+						NodeTreeLink<double> node_new = new NodeTreeLink<double>(value, node_0, node_1);
 						top_assignments[index_element_0] = node_new;
 						top_assignments[index_element_1] = node_new;
                         ClusterCount--;
@@ -113,9 +112,9 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
 			}
 		}
 
-        internal IClusteringHierarchy<DomainType, DissimilarityType, CentroidHierarchy<DomainType, DissimilarityType>> Create(IDataContext data_context)
+        internal IClusteringHierarchy<DomainType, CentroidHierarchy<DomainType>> Create(IDataContext data_context)
         {
-            return new ClusteringHierarchy<DomainType, DissimilarityType, CentroidHierarchy<DomainType, DissimilarityType>>(data_context, null);
+            return new ClusteringHierarchy<DomainType, CentroidHierarchy<DomainType>>(data_context, null);
         }
     }
 }

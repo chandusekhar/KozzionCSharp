@@ -2,6 +2,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using KozzionCore.Tools;
 using KozzionMathematics.Algebra;
+using System.Numerics;
 
 namespace KozzionMathematics.FiniteField
 {
@@ -33,11 +34,16 @@ namespace KozzionMathematics.FiniteField
         [TestMethod]
         public void ATestAlgebraFiniteFieldGenericPrime997()
         {
-            CheckField(new AlgebraFiniteFieldGenericPrime<int>(new AlgebraSymbolInt32(), 157));
+            CheckField(new AlgebraFiniteFieldGenericPrime<int>(new AlgebraSymbolInt32(), 997));
         }
 
-         
- 
+        [TestMethod]
+        public void ATestAlgebraFiniteFieldGenericPrime131BigInteger()
+        {
+            CheckField(new AlgebraFiniteFieldGenericPrime<BigInteger>(new AlgebraSymbolBigInteger(), 131));
+        }
+
+
 
         [TestMethod]
         public void AlgebraFiniteFieldInt32Size8()

@@ -2,10 +2,10 @@
 
 namespace KozzionMachineLearning.Clustering
 {
-    public interface ICentroidDistance<DomainType, DistanceType>
+    public interface ICentroidDistance<DomainType>
     {
         IList<DomainType[]> Members { get; }
 
-        DistanceType ComputeDistance(DomainType[] instance_features);
+        double ComputeDistance(DomainType[] instance_features);
     }
 }

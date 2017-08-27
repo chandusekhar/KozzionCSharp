@@ -105,13 +105,18 @@ namespace KozzionCore.Tools
         }
 
 
-        public bool Equals(object other)
+        public override bool Equals(object other)
         {
             if (other is DateTimeUTC)
             {
                 return InnerDateTime.Equals(((DateTimeUTC)other).InnerDateTime);
             }
             return false;           
+        }
+
+        public override int GetHashCode()
+        { 
+            return InnerDateTime.GetHashCode();
         }
 
 

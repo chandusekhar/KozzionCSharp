@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace KozzionMachineLearning.Clustering
 {
-    public interface ITemplateClusteringHierarchy<DomainType, DissimilarityType, ControidType, DataSetType>
-        where DissimilarityType : IComparable<DissimilarityType>
+    public interface ITemplateClusteringHierarchy<DomainType, ControidType, DataSetType>
     {
-        IClusteringHierarchy<DomainType, DissimilarityType, ControidType> Cluster(DataSetType data_set);
+        IClusteringHierarchy<DomainType, ControidType> Cluster(DataSetType data_set);
 
     }
 }

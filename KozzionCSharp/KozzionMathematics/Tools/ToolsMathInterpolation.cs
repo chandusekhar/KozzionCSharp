@@ -9,12 +9,16 @@ namespace KozzionMathematics.Tools
 {
     public class ToolsMathInterpolation
     {
-        public static double Interpolation1DQuadratic(double fraction_0, double value_0, double value_1)
+        public static double [] Interpolation1DCubic(double [] domain, double [] range, double [] domain_new)
         {
-            double weight_0 = fraction_0 * fraction_0;
-            double weight_1 = (1 - fraction_0) * (1 - fraction_0);
-            return ((value_0 * weight_0) +
-                   (value_1 * weight_1)) / (weight_0 + weight_1);
+            throw new NotImplementedException();
+        }
+
+ 
+
+        public static double[] Shift(double[] domain, double[] range, double shift)
+        {
+            return Resample(domain, range, ToolsMathCollection.Add(domain, shift));
         }
 
         public static RealType Interpolation1DLinear<RealType>(IAlgebraReal<RealType> algebra, RealType fraction_0, RealType value_0, RealType value_1)

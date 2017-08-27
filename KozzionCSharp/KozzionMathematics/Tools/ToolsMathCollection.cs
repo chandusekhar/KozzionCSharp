@@ -83,6 +83,8 @@ namespace KozzionMathematics.Tools
             return AbsoluteDifference(algebra_float_64, list_0, list_1);
         }
 
+  
+
         public static RealType[] DivideElements<RealType>(IAlgebraReal<RealType> algebra, IList<RealType> divided, IList<RealType> divisors)
         {
             if (divided.Count != divisors.Count)
@@ -120,10 +122,16 @@ namespace KozzionMathematics.Tools
             return result;
         }
 
-        public static float[] DivideElements<RealType>(IList<float> devided, float divisor)
+        public static float[] DivideList(IList<float> devided, float divisor)
         {
-            return DivideElements<float>(algebra_float_32, devided, divisor);
+            return DivideElements(algebra_float_32, devided, divisor);
         }
+
+        public static double[] DivideList(IList<double> devideList, IList<double> divisorList)
+        {
+            return DivideElements(algebra_float_64, devideList, divisorList);
+        }
+
 
         public static void DivideElementsIP(IList<double> devided, double divisor)
         {
@@ -463,7 +471,16 @@ namespace KozzionMathematics.Tools
             }
             return count;
         }
-       
+
+        public static double [] Add(IList<double> array_0, double value)
+        {
+            double[] target = new double[array_0.Count];
+            for (int index = 0; index < array_0.Count; index++)
+            {
+                target[index] = array_0[index] + value;
+            }
+            return target;
+        }
 
         public static void AddRBA<RealType>(IAlgebraReal<RealType> algebra, IList<RealType> array_0, IList<RealType> array_1, IList<RealType> array_destination)
         {

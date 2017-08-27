@@ -13,20 +13,20 @@ namespace KozzionMathematics.Function.Implementation.Interpolation
         private double[] domain;
         private double[] values;
 
-        public FunctionInterpolationLinear(double [] domain_sorted, double[] values_sorted)
+        public FunctionInterpolationLinear(double [] domain, double[] range)
         {
-            if (domain_sorted.Length == 0)
+            if (domain.Length == 0)
             {
                 throw new Exception("Array length cannot be 0");
             }
 
-            if (domain_sorted.Length != values_sorted.Length)
+            if (domain.Length != range.Length)
             {
                 throw new Exception("Array lengths do not match");
             }
 
-            this.domain = ToolsCollection.Copy(domain_sorted); //Asume sorted
-            this.values = ToolsCollection.Copy(values_sorted); //Asume sorted
+            this.domain = ToolsCollection.Copy(domain);
+            this.values = ToolsCollection.Copy(range);
         }
 
         public double Compute(double domain_value_0)

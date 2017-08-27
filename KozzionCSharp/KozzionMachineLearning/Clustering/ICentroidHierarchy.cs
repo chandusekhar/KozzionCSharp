@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace KozzionMachineLearning.Clustering
 {
-    public interface ICentroidHierarchy<DomainType, DissimilarityType, CentroidType> : ICentroidDistance<DomainType, DissimilarityType>
+    public interface ICentroidHierarchy<DomainType, CentroidType> : ICentroidDistance<DomainType>
     {
-        DissimilarityType GetDissimilarity(CentroidType other);
+        double GetDissimilarity(CentroidType other);
     }
 }

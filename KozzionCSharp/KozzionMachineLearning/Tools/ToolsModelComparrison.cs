@@ -13,15 +13,15 @@ namespace KozzionMachineLearning.Tools
     public class ToolsModelComparrison
     {
         public static double AUCP<DomainType, LabelType>  (
-            IModelLikelihood<DomainType, LabelType, double> model_0,
+            IModelLikelihood<DomainType, LabelType> model_0,
             IDataSet<DomainType, LabelType> test_set)
         {
             return 0;
         }
 
         public static double ROCP<DomainType>(
-            IModelLikelihood<DomainType, bool, double> model_0, 
-            IModelLikelihood<DomainType, bool, double> model_1,
+            IModelLikelihood<DomainType, bool> model_0, 
+            IModelLikelihood<DomainType, bool> model_1,
             IDataSet<DomainType, bool> test_set,
             bool label_value)  
         {

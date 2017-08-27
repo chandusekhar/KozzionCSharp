@@ -7,29 +7,29 @@ using System.Threading.Tasks;
 
 namespace KozzionMachineLearning.Clustering.Hierarchy
 {
-    public class CentroidHierarchy<DomainType, DissimilarityType> : ICentroidHierarchy<DomainType, DissimilarityType, CentroidHierarchy<DomainType, DissimilarityType>>
+    public class CentroidHierarchy<DomainType> : ICentroidHierarchy<DomainType, CentroidHierarchy<DomainType>>
     {
-        private IFunctionDissimilarity<DomainType[], DissimilarityType> dissimilarity_function;
+        private IFunctionDissimilarity<DomainType[], double> dissimilarity_function;
         private DomainType[] location;
-        private IList<CentroidHierarchy<DomainType, DissimilarityType>> children;
+        private IList<CentroidHierarchy<DomainType>> children;
 
         public IList<DomainType[]> Members
         {
             get
             {
                 List<DomainType[]> members = new List<DomainType[]>();
-                Queue<CentroidHierarchy<DomainType, DissimilarityType>> queue = new Queue<CentroidHierarchy<DomainType, DissimilarityType>>();
+                Queue<CentroidHierarchy<DomainType>> queue = new Queue<CentroidHierarchy<DomainType>>();
                 queue.Enqueue(this);
                 while (0 < queue.Count)
                 {
-                    CentroidHierarchy<DomainType, DissimilarityType> element = queue.Dequeue();
+                    CentroidHierarchy<DomainType> element = queue.Dequeue();
                     if (element.children.Count == 0)
                     {
                         members.Add(element.location);
                     }
                     else
                     {
-                        foreach (CentroidHierarchy<DomainType, DissimilarityType> child in element.children)
+                        foreach (CentroidHierarchy<DomainType> child in element.children)
                         {
                             queue.Enqueue(child);
                         }                        
@@ -39,19 +39,19 @@ namespace KozzionMachineLearning.Clustering.Hierarchy
             }
         }
 
-        public CentroidHierarchy(IFunctionDissimilarity<DomainType[], DissimilarityType> dissimilarity_function, DomainType[] location, IList<CentroidHierarchy<DomainType, DissimilarityType>> children)
+        public CentroidHierarchy(IFunctionDissimilarity<DomainType[], double> dissimilarity_function, DomainType[] location, IList<CentroidHierarchy<DomainType>> children)
         {
             this.dissimilarity_function = dissimilarity_function;
             this.location = location;
             this.children = children;
         }
 
-        public DissimilarityType ComputeDistance(DomainType[] instance_features)
+        public double ComputeDistance(DomainType[] instance_features)
         {
             return this.dissimilarity_function.Compute(this.location, instance_features);
         }
 
-        public DissimilarityType GetDissimilarity(CentroidHierarchy<DomainType, DissimilarityType> other)
+        public double GetDissimilarity(CentroidHierarchy<DomainType> other)
         {
             return this.dissimilarity_function.Compute(this.location, other.location);
         }

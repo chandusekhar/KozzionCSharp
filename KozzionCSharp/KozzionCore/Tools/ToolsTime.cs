@@ -8,11 +8,13 @@ namespace KozzionCore.Tools
 {
     public static class ToolsTime
     {
+
+
         public static DateTime UnixTimeStampToDateTime(double unix_time_stamp)
         {
             // Unix timestamp is seconds past epoch
             DateTime date_time = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            return date_time.AddSeconds(unix_time_stamp).ToLocalTime();
+            return date_time.AddSeconds(unix_time_stamp);
         }
 
 
@@ -20,7 +22,7 @@ namespace KozzionCore.Tools
         {
             // Java timestamp is millisecods past epoch
             DateTime date_time = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            return date_time.AddSeconds(Math.Round(java_time_stamp / 1000)).ToLocalTime();
+            return date_time.AddSeconds(Math.Round(java_time_stamp / 1000));
         }
 
         public static DateTimeUTC UnixTimeStampToDateTimeUTC(double unix_time_stamp)

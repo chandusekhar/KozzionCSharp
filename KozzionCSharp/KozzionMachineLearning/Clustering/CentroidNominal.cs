@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KozzionMachineLearning.Clustering
 {
-    public class CentroidNominal : ICentroidDistance<int, double>
+    public class CentroidNominal : ICentroidDistance<int>
     {
         public IList<int[]> Members { get; private set; }
 

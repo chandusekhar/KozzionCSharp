@@ -50,7 +50,7 @@ namespace KozzionMachineLearning.Method.SupportVectorMachine
 
         }
 
-        public override IModelLikelihood<double, int, double> GenerateModelLikelihood(IDataSet<double, int> training_set)
+        public override IModelLikelihood<double, int> GenerateModelLikelihood(IDataSet<double, int> training_set)
         {
             svm_problem prob = new svm_problem();
             prob.l = training_set.InstanceCount;
@@ -85,7 +85,7 @@ namespace KozzionMachineLearning.Method.SupportVectorMachine
 
 
 
-            IModelLikelihood<double, int, double> model = new TemplateModelLibSVMCSVC().GenerateModelLikelihood(training_set);
+            IModelLikelihood<double, int> model = new TemplateModelLibSVMCSVC().GenerateModelLikelihood(training_set);
     
 
             //double C = 200;

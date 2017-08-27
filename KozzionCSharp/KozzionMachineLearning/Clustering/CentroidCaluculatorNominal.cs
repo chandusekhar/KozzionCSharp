@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KozzionMachineLearning.Clustering.KMeans
 {
-    public class CentroidCalculatorNominal : IFunction<IList<int[]>, ICentroidDistance<int, double>>
+    public class CentroidCalculatorNominal : IFunction<IList<int[]>, ICentroidDistance<int>>
     {
         public string FunctionType { get { return "CentroidCalculatorNominal"; } }
 
@@ -24,7 +24,7 @@ namespace KozzionMachineLearning.Clustering.KMeans
         }
 
 
-        public ICentroidDistance<int, double> Compute(IList<int[]> instance_features_list)
+        public ICentroidDistance<int> Compute(IList<int[]> instance_features_list)
         {
             return new CentroidNominal(this.feature_value_counts, instance_features_list);
         }

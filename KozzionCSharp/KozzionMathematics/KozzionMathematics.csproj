@@ -113,7 +113,9 @@
     <Compile Include="Function\Implementation\FunctionMSEOnDomain.cs" />
     <Compile Include="Function\Implementation\FunctionMultiStep.cs" />
     <Compile Include="Function\Implementation\FunctionStep.cs" />
+    <Compile Include="Function\Implementation\Interpolation\FunctionInterpolationCubic.cs" />
     <Compile Include="Function\Implementation\Interpolation\FunctionInterpolationLinear.cs" />
+    <Compile Include="Function\Implementation\Interpolation\TriDiagonalMatrix.cs" />
     <Compile Include="Function\Implementation\System\FunctionSystemMatrix.cs" />
     <Compile Include="Numeric\Convolution\ConvoluterGenericStepCorrectedUnoffsetted.cs" />
     <Compile Include="Numeric\Convolution\IConvoluterFloat64.cs" />
@@ -137,7 +139,9 @@
     <Compile Include="Numeric\Signal\Windowing\IFilterWindow.cs" />
     <Compile Include="Numeric\Solver\LinearSolver\BiCGStab.cs" />
     <Compile Include="Numeric\Solver\LinearSolver\ISolverLinear.cs" />
+    <Compile Include="Numeric\Solver\LinearSolver\SolverLinearGMRESMathNet.cs" />
     <Compile Include="Numeric\Solver\LinearSolver\SolverLinearMathNetQR.cs" />
+    <Compile Include="Numeric\Solver\LinearSolver\SolverLinearResult.cs" />
     <Compile Include="Statistics\Distribution\Implementation\DistributionKolmogorovSmirnov.cs" />
     <Compile Include="Statistics\Distribution\Implementation\DistributionNormalMultivariateFloat64.cs" />
     <Compile Include="Statistics\Distribution\Implementation\DistributionNormalUnivariateFloat32.cs" />
