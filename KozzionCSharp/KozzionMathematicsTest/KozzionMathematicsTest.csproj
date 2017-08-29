@@ -117,6 +117,7 @@
     <Compile Include="Tools\ToolsMathBigIntegerPrimeTest.cs" />
     <Compile Include="Tools\ToolsMathConvolutionTest.cs" />
     <Compile Include="Tools\ToolsMathLinearRegressionTest.cs" />
+    <Compile Include="Tools\ToolsMathLinearTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\kozzioncore\KozzionCore.csproj">

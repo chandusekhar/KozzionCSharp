@@ -163,6 +163,7 @@
     <Compile Include="Clustering\TemplateCentroidCalculatorMeanFloatArray.cs" />
     <Compile Include="Clustering\TemplateCentroidCalculatorNominal.cs" />
     <Compile Include="DataSet\DataInstance.cs" />
+    <Compile Include="DataSet\DataSetDefault.cs" />
     <Compile Include="DataSet\DataSetHybrid.cs" />
     <Compile Include="Method\LVQ\ModelLVQ.cs" />
     <Compile Include="Method\DecisionTrees\ModelDiscreteC45Default.cs" />
@@ -180,9 +181,9 @@
     <Compile Include="Shady\FunctionFindMaxAUCROCPs.cs" />
     <Compile Include="Shady\FunctionMinimalCount.cs" />
     <Compile Include="Shady\SelectionOptimization.cs" />
+    <Compile Include="Tools\ToolsCluster.cs" />
     <Compile Include="Tools\ToolsModelComparrison.cs" />
     <Compile Include="Tools\ToolsModelIO.cs" />
-    <Compile Include="Transform\ATransform.cs" />
     <Compile Include="Transform\ITransform.cs" />
     <Compile Include="Method\DecisionTrees\ModelDiscreteC45.cs" />
     <Compile Include="Method\DecisionTrees\TemplateModelDiscreteC45.cs" />
@@ -233,8 +234,10 @@
     <Compile Include="Transform\DimensionReduction\TemplateDimensionReductionPCADefault.cs" />
     <Compile Include="Transform\DimensionReduction\TemplateDimensionReductionPCA.cs" />
     <Compile Include="Transform\DimensionReduction\DimensionReductionPCA.cs" />
+    <Compile Include="Transform\TemplateTransformWhiteningCholesky.cs" />
     <Compile Include="Transform\TransformInverse.cs" />
-    <Compile Include="Transform\TransformWhitening.cs" />
+    <Compile Include="Transform\TransformWhiteningOld.cs" />
+    <Compile Include="Transform\TransformWhiteningCholesky.cs" />
     <Compile Include="Voting\VotingSystemMeanDouble.cs" />
     <Compile Include="Clustering\Hierachycal\LinkElementTreeTemplate.cs" />
     <Compile Include="Method\DeepLearning\DeepNeuralNet.cs" />
@@ -314,7 +317,6 @@
     <Content Include="Transform\PercentileTransformDouble.java" />
     <Content Include="Transform\TransformGeneratorIdentity.java" />
     <Compile Include="Transform\TransformGeneratorQuantile.cs" />
-    <Content Include="Transform\TransformGeneratorWhitening.java" />
     <Compile Include="Transform\TransformRescale.cs" />
   </ItemGroup>
   <ItemGroup>

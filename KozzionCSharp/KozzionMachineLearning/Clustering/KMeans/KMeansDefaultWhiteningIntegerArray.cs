@@ -25,7 +25,7 @@ namespace KozzionMachineLearning.Clustering.KMeans
 			}
 
             // Transform
-            TransformWhitening<Matrix<double>> transform = new TransformWhitening<Matrix<double>>(new AlgebraLinearReal64MathNet(), ToolsCollection.ConvertToTable(instances_converted));
+            TransformWhiteningOld<Matrix<double>> transform = new TransformWhiteningOld<Matrix<double>>(new AlgebraLinearReal64MathNet(), ToolsCollection.ConvertToTable(instances_converted));
             IList<float[]> instances_transformed = new List<float[]>();
 			foreach (float [] instance in instances_converted)
 			{

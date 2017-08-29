@@ -1,11 +1,11 @@
 
+using KozzionMachineLearning.DataSet;
 using System.Collections.Generic;
 
 namespace KozzionMachineLearning.Transform
 {
-    public interface ITemplateTransform<DomainType>
+    public interface ITemplateTransform
     {
-        ITransform<DomainType, DomainType> Generate(List<DomainType> instances);
-
+        ITransform Generate(IDataSet dataset);
     }
 }

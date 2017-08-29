@@ -274,5 +274,68 @@ namespace System
                 array[index_0, index_1] = source[index_0];
             });
         }
+
+        public static ArrayType[] ToArray1D10<ArrayType>(this ArrayType[,] array)
+        {
+            ArrayType[] copy = new ArrayType[array.GetLength(0) * array.GetLength(1)];
+            Parallel.For(0, array.GetLength(0), index_0 =>
+            {
+                for (int index_1 = 0; index_1 < array.GetLength(1); index_1++)
+                {
+                    int index = (index_0 * array.GetLength(1)) + index_1;
+                    copy[index] = array[index_0, index_1];
+                }
+
+            });
+            return copy;
+        }
+
+        public static ArrayType[] ToArray1D01<ArrayType>(this ArrayType[,] array)
+        {
+            ArrayType[] copy = new ArrayType[array.GetLength(0) * array.GetLength(1)];
+            Parallel.For(0, array.GetLength(0), index_0 =>
+            {
+                for (int index_1 = 0; index_1 < array.GetLength(1); index_1++)
+                {
+                    int index = (index_1 * array.GetLength(0)) + index_0;
+                    copy[index] = array[index_0, index_1];
+                }
+                
+            });
+            return copy;
+        }
+
+
+        public static ArrayType[][] ToArrayArray10<ArrayType>(this ArrayType[,] array)
+        {
+            ArrayType[][] copy = new ArrayType[array.GetLength(0)][];
+            Parallel.For(0, array.GetLength(0), index_0 =>
+            {
+                copy[index_0] = new ArrayType[array.GetLength(1)];
+                for (int index_1 = 0; index_1 < array.GetLength(1); index_1++)
+                {
+                    copy[index_0][index_1] = array[index_0, index_1];
+                }
+
+            });
+            return copy;
+        }
+
+        public static ArrayType[][] ToArrayArray01<ArrayType>(this ArrayType[,] array)
+        {
+            ArrayType[][] copy = new ArrayType[array.GetLength(1)][];
+            Parallel.For(0, array.GetLength(0), index_1 =>
+            {
+                copy[index_1] = new ArrayType[array.GetLength(0)];
+                for (int index_0 = 0; index_0 < array.GetLength(0); index_0++)
+                {
+                    copy[index_1][index_0] = array[index_0, index_1];
+                }
+
+            });
+            return copy;
+        }
+
+
     }
 }

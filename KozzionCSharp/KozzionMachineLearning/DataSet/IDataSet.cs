@@ -1,8 +1,29 @@
+using MathNet.Numerics.LinearAlgebra;
 using System;
 using System.Collections.Generic;
 
 namespace KozzionMachineLearning.DataSet
 {
+    public interface IDataSet
+    {
+        IDataContext DataContext { get; }
+
+        int InstanceCount { get; }
+        int FeatureCount { get; }
+        int GetMissingCount(int feature_index);
+
+        IList<DataInstance> InstanceList { get; }
+
+        IDataSet RemoveFeatures(IList<int> feature_indexes);
+        IDataSet RemoveInstancesMissing(int feature_index);
+
+        IDataSet PromoteFeatureToLabel(int feature_index);
+        Matrix<double> GetFeatureDataAsMatrix();
+        IDataSet PromoteFeatureLevelToInterval(int[] interval_feature_indexes);
+    }
+
+
+
     public interface IDataSet<FeatureType>
     {
         IDataContext DataContext { get; }

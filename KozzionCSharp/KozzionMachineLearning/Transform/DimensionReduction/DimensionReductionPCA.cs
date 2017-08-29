@@ -11,7 +11,7 @@ using KozzionMathematics.Function;
 
 namespace KozzionMachineLearning.Transform
 {
-    public class DimensionReductionPCA<MatrixType> : ITransform<double[], double[]>
+    public class DimensionReductionPCA<MatrixType> : ITransform
     {
         public string FunctionType { get { throw new NotImplementedException(); } }
 
@@ -26,21 +26,29 @@ namespace KozzionMachineLearning.Transform
             this.projection = projection;
         }
 
-        public double[] Compute(double[] instance_features)
+        public double[] TransformForward(double[] source)
         {
-            AMatrix<MatrixType> vector = algebra.Create(instance_features, false);
-            AMatrix<MatrixType> result = vector* projection;
+            AMatrix<MatrixType> vector = algebra.Create(source, false);
+            AMatrix<MatrixType> result = vector * projection;
             return result.ToArray1DFloat64();
         }
 
-        public double[] ComputeInverse(double[] input)
+        public double[] TransformBackward(double[] source)
         {
             throw new NotImplementedException();
         }
 
-        public IFunctionBijective<double[], double[]> GetInverse()
+
+        public IDataSet TransformForward(IDataSet source)
         {
             throw new NotImplementedException();
         }
+
+        public IDataSet TransformBackward(IDataSet source)
+        {
+            throw new NotImplementedException();
+        }
+
+   
     }
 }

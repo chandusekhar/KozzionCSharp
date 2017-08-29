@@ -7,8 +7,8 @@ using KozzionMathematics.Function;
 
 namespace KozzionMachineLearning.Transform
 {
-    public class TransformInverse<DomainType, RangeType> : ITransform<DomainType, RangeType>
-    {
+    public class TransformInverse<DomainType, RangeType>
+    { 
         public string FunctionType
         {
             get

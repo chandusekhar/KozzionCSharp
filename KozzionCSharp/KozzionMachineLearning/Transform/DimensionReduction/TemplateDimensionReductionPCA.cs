@@ -24,7 +24,7 @@ namespace KozzionMachineLearning.Transform
             this.destination_dimension_count = destination_dimension_count;
         }
 
-        public ITransform<double[], double[]> GenerateTransform(IDataSet<double> data_set)
+        public ITransform GenerateTransform(IDataSet<double> data_set)
         {
             AMatrix<MatrixType> data = algebra.Create(ToolsCollection.ConvertToArray2D(data_set.FeatureData));
             SVD<MatrixType> svd = algebra.ComputeSVD(data);

@@ -197,7 +197,7 @@ namespace KozzionMachineLearningCL
             IDataSet<double> data_set_transformed1 = new DataSet<double,int>(transformed_data1);
 
 
-            ITransform<double[], double[]> transform = template_pca.GenerateTransform(data_set_transformed1);
+            ITransform transform = template_pca.GenerateTransform(data_set_transformed1);
             double[][] transformed_data2 = new double[instance_count][];
             int[][] label_data = training_set.LabelData;
             Color[] instance_colors = new Color[instance_count];
@@ -205,7 +205,7 @@ namespace KozzionMachineLearningCL
 
             for (int instance_index = 0; instance_index < instance_count; instance_index++)
             {
-                transformed_data2[instance_index] = transform.Compute(data_set_transformed1.GetInstanceFeatureData(instance_index));
+                transformed_data2[instance_index] = transform.TransformForward(data_set_transformed1.GetInstanceFeatureData(instance_index));
                 instance_colors[instance_index] = label_colors[label_data[instance_index][0]];
             }
             RendererPoints<Matrix<double>> renderer = new RendererPoints<Matrix<double>>(new AlgebraLinearReal64MathNet(), 1000, 1000, (AngleRadian)0, (AngleRadian)0, 10);

@@ -3,9 +3,10 @@ using KozzionMathematics.Algebra;
 using KozzionMathematics.Function;
 using KozzionMathematics.Tools;
 using System;
+
 namespace KozzionMathematics.Datastructure.Matrix
 {
-    public class TransformWhitening<MatrixType> :
+    public class TransformWhiteningOld<MatrixType> :
 			IFunctionBijective<float [], float []>
 	{
         public string FunctionType { get { return "TransformWhitening"; } }
@@ -14,7 +15,7 @@ namespace KozzionMathematics.Datastructure.Matrix
         AMatrix<MatrixType> matrix_forward;
         AMatrix<MatrixType> matrix_backward;
 
-		public TransformWhitening(IAlgebraLinear<MatrixType> algebra,
+		public TransformWhiteningOld(IAlgebraLinear<MatrixType> algebra,
 			float [,] data)
 		{
             AMatrix<MatrixType> data_matrix = algebra.Create(data);

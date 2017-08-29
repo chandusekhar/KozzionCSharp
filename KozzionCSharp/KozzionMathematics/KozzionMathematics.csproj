@@ -68,8 +68,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MathNet.Numerics, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.3.10.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    <Reference Include="MathNet.Numerics, Version=3.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.20.0\lib\net40\MathNet.Numerics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -191,10 +191,10 @@
     <Compile Include="DataStructure\KDTree\MinHeap.cs" />
     <Compile Include="DataStructure\KDTree\NearestNeighbour.cs" />
     <Compile Include="Tools\RankMode.cs" />
+    <Compile Include="Tools\ToolsMathLinear.cs" />
     <Compile Include="Tools\ToolsMathStatistics.cs" />
     <None Include="DataStructure\KDTree\old\KDNode.err" />
     <None Include="DataStructure\KDTree\old\KDTree.err" />
-    <Compile Include="DataStructure\Matrix\MatrixMemoryCovariance.cs" />
     <Compile Include="Function\IFunctionDissimilarity.cs" />
     <Compile Include="Function\IFunctionDistance.cs" />
     <Compile Include="Function\Implementation\Distance\FunctionDistanceEuclidean.cs" />

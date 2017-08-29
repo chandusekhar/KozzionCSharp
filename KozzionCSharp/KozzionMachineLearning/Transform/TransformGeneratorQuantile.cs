@@ -1,11 +1,12 @@
 using KozzionCore.Tools;
+using KozzionMachineLearning.DataSet;
 using KozzionMathematics.Function;
 using KozzionMathematics.Tools;
 using System;
 using System.Collections.Generic;
 namespace KozzionMachineLearning.Transform
 {
-    public class TransformGeneratorQuantile : ITemplateTransform<float []>
+    public class TransformGeneratorQuantile : ITemplateTransform
 	{
 		float quantile;
 
@@ -15,7 +16,12 @@ namespace KozzionMachineLearning.Transform
 			this.quantile = quantile;
 		}
 
-		public IFunctionBijective<float [], float []> Generate(
+        public ITransform Generate(IDataSet dataset)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IFunctionBijective<float [], float []> Generate(
 			IList<float []> instances)
 		{
             float[,] array = ToolsCollection.ConvertToTable(instances);
@@ -30,15 +36,5 @@ namespace KozzionMachineLearning.Transform
 			}
 			return new TransformRescale(lower_bounds, upper_bounds);      
 		}
-
-        public IFunctionBijective<float[], float[]> Generate(List<float[]> instances)
-        {
-            throw new NotImplementedException();
-        }
-
-        ITransform<float[], float[]> ITemplateTransform<float[]>.Generate(List<float[]> instances)
-        {
-            throw new NotImplementedException();
-        }
     }    
 }

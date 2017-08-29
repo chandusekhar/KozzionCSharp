@@ -1,8 +1,13 @@
-﻿using KozzionMathematics.Function;
+﻿using KozzionMachineLearning.DataSet;
+using KozzionMathematics.Function;
 
 namespace KozzionMachineLearning.Transform
 {
-    public interface ITransform<DomainType, RangeType> : IFunctionBijective<DomainType, RangeType>
+    public interface ITransform
     {
+        double[] TransformForward(double[] source);
+        double[] TransformBackward(double[] source);
+        IDataSet TransformForward(IDataSet source);
+        IDataSet TransformBackward(IDataSet source);
     }
 }
