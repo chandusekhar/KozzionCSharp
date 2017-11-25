@@ -37,9 +37,14 @@ using KozzionPlotting.Tools;
 namespace KozzionMachineLearningCL
 {
     public class Program0
-    {    
+    {
 
         static void Main(string[] args)
+        {
+
+        }
+
+        static void Old0(string[] args)
         {
 
             // sample are 30 per second.

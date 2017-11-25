@@ -31,8 +31,8 @@ namespace KozzionAudioUI
             set { this.RaiseAndSetIfChanged(ref this.channel0_image, value); }
         }
 
-        public IReactiveCommand<object> CommandStart { get; private set; }
-        public IReactiveCommand<object> CommandStop { get; private set; }
+        public ReactiveCommand CommandStart { get; private set; }
+        public ReactiveCommand CommandStop { get; private set; }
 
 
 
@@ -41,11 +41,8 @@ namespace KozzionAudioUI
 
         public ModelApplication()
         {
-            this.CommandStart = ReactiveCommand.Create(Observable.Return(true));
-            this.CommandStart.Subscribe(_ => ExecuteStart());
-
-            this.CommandStop = ReactiveCommand.Create(Observable.Return(true));
-            this.CommandStop.Subscribe(_ => ExecuteStop());
+            this.CommandStart = ReactiveCommand.Create(ExecuteStart);
+            this.CommandStop = ReactiveCommand.Create(ExecuteStop);
 
             RendererBitmapSourceDefault<float> renderer = new RendererBitmapSourceDefault<float>(new FunctionFloat32ToColorJet(0, 1));
             int block_size   = 4096; //4096 * 8;
